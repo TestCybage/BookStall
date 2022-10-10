@@ -24,6 +24,8 @@ public class BookController {
 	@Autowired
 	private BookService service;
 	
+	
+	
 	@GetMapping("/getAllBooks")
 	public ResponseEntity<List<Book>> getAllBooks(){
 		return new ResponseEntity<>(service.getAllBooks(), HttpStatus.OK);
@@ -35,7 +37,7 @@ public class BookController {
 	}
 	
 	@GetMapping("/getBookByName/{name}")
-	public ResponseEntity<List<Book>> getBookByName(@PathVariable String name){
+	public ResponseEntity<Book> getBookByName(@PathVariable String name){
 		return new ResponseEntity<>(service.getBookByName(name), HttpStatus.OK);
 	}
 	
