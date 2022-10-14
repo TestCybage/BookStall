@@ -5,8 +5,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,28 +18,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class OrderedBook {
+	
 	@Id
 	@GeneratedValue
-	private int bookId;
+	private int orderedBookId;
 	
-	@NotNull
-	private String bookName;
+	@OneToOne(fetch = FetchType.EAGER)
+	private Book book;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Author author;
-	
-	private String description;
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	private Orders order;
+
 	@Min(0)
-	private int inStock;
-	
-	@Min(0)
-	private int copiesSold;
-	
-	@NotNull
-	private double price;
-	
-	private int rating;
-	
+	private int quantity;
+
+	private double amount;
 }

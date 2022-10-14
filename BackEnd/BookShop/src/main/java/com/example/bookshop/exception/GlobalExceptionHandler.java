@@ -22,5 +22,10 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> alreadyExist(AlreadyExistException exception){
 		return new ResponseEntity<>(exception.getMessage(),HttpStatus.ALREADY_REPORTED);
 	}
+	
+	@ExceptionHandler(InvalidInputException.class)
+	public ResponseEntity<String> invalidInputQuantity(InvalidInputException exception){
+		return new ResponseEntity<>(exception.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+	}
 
 }
