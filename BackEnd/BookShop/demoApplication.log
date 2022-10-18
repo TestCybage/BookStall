@@ -292,3 +292,26 @@ INFO - Book(bookId=0, bookName=INDIA BHARAT PAKISTAN, author=Author(authorId=0, 
 INFO - 0
 INFO - INDIA BHARAT PAKISTAN
 INFO - J Sai Deepak
+INFO - Book(bookId=0, bookName=INDIA BHARAT PAKISTAN, author=Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0), description=Journey of Sandwitched Nation, inStock=200, copiesSold=0, price=500.0, rating=0)
+INFO - 0
+INFO - INDIA BHARAT PAKISTAN
+INFO - J Sai Deepak
+INFO - Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0)
+INFO - 0
+INFO - J Sai Deepak
+INFO - Author(authorId=0, authorName=J SAI DEEPAK, books=null, rating=0)
+INFO - 0
+INFO - J SAI DEEPAK
+INFO - Author(authorId=0, authorName=J SAI DEEPAK, books=null, rating=0)
+INFO - 0
+INFO - J SAI DEEPAK
+INFO - Book(bookId=0, bookName=INDIA BHARAT PAKISTAN, author=Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0), description=Journey of Sandwitched Nation, inStock=200, copiesSold=0, price=500.0, rating=0)
+INFO - 0
+INFO - INDIA BHARAT PAKISTAN
+INFO - J Sai Deepak
+INFO - 4
+INFO - 4
+INFO - Author(authorId=0, authorName=J SAI DEEPAK, books=null, rating=0)
+INFO - 0
+INFO - J SAI DEEPAK
+INFO - 5
