@@ -20,12 +20,16 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(AlreadyExistException.class)
 	public ResponseEntity<String> alreadyExist(AlreadyExistException exception){
-		return new ResponseEntity<>(exception.getMessage(),HttpStatus.ALREADY_REPORTED);
+		return new ResponseEntity<>(exception.getMessage(),HttpStatus.CONFLICT);
 	}
 	
 	@ExceptionHandler(InvalidInputException.class)
 	public ResponseEntity<String> invalidInputQuantity(InvalidInputException exception){
 		return new ResponseEntity<>(exception.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+	}
+	@ExceptionHandler(ShortPasswordException.class)
+	public ResponseEntity<String> shortPasswordException(ShortPasswordException exception){
+		return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_ACCEPTABLE);
 	}
 
 }

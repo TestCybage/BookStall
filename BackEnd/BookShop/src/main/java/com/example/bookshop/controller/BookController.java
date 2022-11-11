@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bookshop.dto.BookDto;
 import com.example.bookshop.entities.Book;
+import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.service.BookService;
 
 @RestController
@@ -39,7 +41,10 @@ public class BookController {
 
 	@GetMapping("/getBookByName/{name}")
 	public ResponseEntity<BookDto> getBookByName(@PathVariable String name) {
-		return new ResponseEntity<>(BookDto.toDto(service.getBookByName(name)), HttpStatus.OK);
+		Book book = service.getBookByName(name);
+		if (book==null)
+			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
+		return new ResponseEntity<>(BookDto.toDto(book), HttpStatus.OK);
 	}
 
 	@GetMapping("/getBookByAuthorName/{name}")
