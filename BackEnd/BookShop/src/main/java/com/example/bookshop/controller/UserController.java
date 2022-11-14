@@ -1,12 +1,13 @@
 package com.example.bookshop.controller;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ import com.example.bookshop.service.UserService;
 
 @RestController
 @RequestMapping("/user")
+@PreAuthorize("hasRole('USER')")
 public class UserController {
 	
 	@Autowired
@@ -31,9 +33,14 @@ public class UserController {
 		return new ResponseEntity<>(UserDto.toDto(user), HttpStatus.OK);
 	}
 	
-	@PostMapping("/signUp")
-	public ResponseEntity<UserDto> signUp(@RequestBody UserDto dto){
-		return new ResponseEntity<>(UserDto.toDto(service.signUp(UserDto.toEntity(dto))), HttpStatus.CREATED);
+	@PostConstruct
+	public void initRolesAndUsers() {
+		service.initRolesAndUsers();
+	}
+	
+	@GetMapping("/forUser")
+	public String forUser() {
+		return "This URL is only accessible to USER";
 	}
 	
 

@@ -1,11 +1,12 @@
 package com.example.bookshop.dto;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 
 import com.example.bookshop.entities.Orders;
-import com.example.bookshop.entities.UserRole;
+import com.example.bookshop.entities.Role;
 import com.example.bookshop.entities.UserStatus;
 import com.example.bookshop.entities.Users;
 
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDto {
 
-	private int userId;
+	private String userName;
 
 	private String name;
 
@@ -31,8 +32,9 @@ public class UserDto {
 	private UserStatus status;
 
 	private List<Orders> orders;
+	
+	private Set<Role> role; 
 
-	private UserRole role;
 
 	public static UserDto toDto(Users entity) {
 		UserDto dto = new UserDto();

@@ -1,14 +1,17 @@
 package com.example.bookshop.entities;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -27,8 +30,7 @@ import lombok.NoArgsConstructor;
 public class Users {
 	
 	@Id
-	@GeneratedValue
-	private int userId;
+	private String userName;
 	
 	@NotNull
 	private String name;
@@ -51,7 +53,15 @@ public class Users {
 	@JsonIgnore
 	private List<Orders> orders;
 	
-	@Enumerated(EnumType.STRING)
-	private UserRole role;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="USER_ROLE",
+		joinColumns = {
+				@JoinColumn(name="USER_ID")
+		},
+		inverseJoinColumns = {
+				@JoinColumn(name="ROLE_ID")
+		}
+			)
+	private Set<Role> role; 
 		
 }

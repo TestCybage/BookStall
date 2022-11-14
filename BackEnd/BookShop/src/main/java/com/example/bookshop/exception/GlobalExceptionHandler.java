@@ -31,5 +31,9 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> shortPasswordException(ShortPasswordException exception){
 		return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_ACCEPTABLE);
 	}
+	@ExceptionHandler(LoginException.class)
+	public ResponseEntity<String> loginException(LoginException exception){
+		return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+	}
 
 }

@@ -17,10 +17,18 @@ public class ErrorMessage {
 	
 	public static final String USER_NOT_FOUND = "User not found";
 	
+	public static final String INVALID_USERNAME = "UserName not valid";
+	
 	public static final String USER_LIST_EMPTY = "User List Empty";
+	
+	public static final String USERNAME_EXISTS= "UserName already exist";
 	
 	public static final String EMAIL_EXISTS= "Email already exist";
 	
 	public static final String SHORT_PASSWORD = "Password length must be greater than 8";
+	
+	public static final String USER_DISABLED = "USER is Disabled";
+	
+	public static final String BAD_CREDENTIALS = "Bad Credentials from User";
 
 }
