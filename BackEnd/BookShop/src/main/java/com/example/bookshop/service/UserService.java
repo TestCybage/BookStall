@@ -1,6 +1,7 @@
 package com.example.bookshop.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -12,7 +13,9 @@ import com.example.bookshop.entities.Role;
 import com.example.bookshop.entities.UserStatus;
 import com.example.bookshop.entities.Users;
 import com.example.bookshop.exception.AlreadyExistException;
+import com.example.bookshop.exception.EmptyRecordException;
 import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.exception.ShortPasswordException;
 import com.example.bookshop.repository.RoleRepo;
 import com.example.bookshop.repository.UserRepo;
@@ -30,9 +33,7 @@ public class UserService {
 	private PasswordEncoder passwordEncoder;
 	
 	Logger logger = Logger.getLogger(UserService.class);
-	
-	
-	
+
 	public Users getUserByEmail(String email) {
 		return dao.findByEmail(email);
 	}
@@ -44,7 +45,7 @@ public class UserService {
 			throw new AlreadyExistException(ErrorMessage.EMAIL_EXISTS);
 		if(user.getPassword().length()<8)
 			throw new ShortPasswordException(ErrorMessage.SHORT_PASSWORD);
-		Role role = roleDao.findById("USER").get();
+		Role role = roleDao.findById("USER").orElse(null);
 		logger.info(role);
 		Set<Role> roles = new HashSet<>();
 		roles.add(role);
@@ -75,23 +76,37 @@ public class UserService {
 		adminRoles.add(adminRole);
 		adminUser.setRole(adminRoles);
 		dao.save(adminUser);
-		
-//		Users user = new Users();
-//		user.setUserName("aashay");
-//		user.setName("Aashay Kadu");
-//		user.setEmail("aashay@gmail.com");
-//		user.setMobileNo("1234567980");
-//		user.setPassword(getEncodedPassword("aashay@pass"));
-//		user.setStatus(UserStatus.ENABLED);
-//		Set<Role>userRoles = new HashSet<>();
-//		userRoles.add(userRole);
-//		user.setRole(userRoles);
-//		dao.save(user);
 	}
 	
 	public String getEncodedPassword(String password) {
 		return passwordEncoder.encode(password);
 	}
 	
+	public Users unblockUser(String email) {
+		Users user = getUserByEmail(email);
+		if(user==null)
+			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);
+		user.setStatus(UserStatus.ENABLED);
+		return dao.save(user);
+	}
+	
+	public Users getById(String userName) {
+		return dao.findById(userName).orElse(null);
+	}
+	
+	public Users disableUser(String userName) {
+		Users user = getById(userName);
+		if(user==null)
+			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);
+		user.setStatus(UserStatus.DISABLED);
+		return dao.save(user);
+	}
+	
+	public List<Users> getDisabledUsers(){
+		List<Users> users = dao.findByStatus(UserStatus.DISABLED);
+		if(users.isEmpty())
+			throw new EmptyRecordException(ErrorMessage.USER_LIST_EMPTY);
+		return users;
+	}	
 
 }

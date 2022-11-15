@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,16 +30,19 @@ public class BookController {
 	@Autowired
 	private BookService service;
 
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/getAllBooks")
 	public ResponseEntity<List<BookDto>> getAllBooks() {
 		return new ResponseEntity<>(BookDto.toDto(service.getAllBooks()), HttpStatus.OK);
 	}
-
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/getBook/{id}")
 	public ResponseEntity<BookDto> getBookById(@PathVariable int id) {
 		return new ResponseEntity<>(BookDto.toDto(service.getBookById(id)), HttpStatus.OK);
 	}
-
+	
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/getBookByName/{name}")
 	public ResponseEntity<BookDto> getBookByName(@PathVariable String name) {
 		Book book = service.getBookByName(name);
@@ -47,31 +51,37 @@ public class BookController {
 		return new ResponseEntity<>(BookDto.toDto(book), HttpStatus.OK);
 	}
 
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/getBookByAuthorName/{name}")
 	public ResponseEntity<List<BookDto>> getBookByAuthorName(@PathVariable String name) {
 		return new ResponseEntity<>(BookDto.toDto(service.getBookByAuthorName(name)), HttpStatus.OK);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/addBook")
 	public ResponseEntity<BookDto> addBook(@RequestBody BookDto bookDto) {
 		return new ResponseEntity<>(BookDto.toDto(service.addBook(BookDto.toEntity(bookDto))), HttpStatus.CREATED);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@PatchMapping("/editPrice/{id}/{price}")
 	public ResponseEntity<BookDto> editPrice(@PathVariable int id, @PathVariable double price) {
 		return new ResponseEntity<>(BookDto.toDto(service.editPrice(id, price)), HttpStatus.ACCEPTED);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@PatchMapping("/editQuantity/{id}/{quantity}")
 	public ResponseEntity<BookDto> changeQuanity(@PathVariable int id, @PathVariable int quantity) {
 		return new ResponseEntity<>(BookDto.toDto(service.editQuantity(id, quantity)), HttpStatus.ACCEPTED);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deleteBook/{id}")
 	public ResponseEntity<List<BookDto>> deleteBook(@PathVariable int id) {
 		return new ResponseEntity<>(BookDto.toDto(service.deleteBook(id)), HttpStatus.OK);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/clearAll")
 	public ResponseEntity<String> clearRecords() {
 		return new ResponseEntity<>(service.clearAllRecords(), HttpStatus.OK);

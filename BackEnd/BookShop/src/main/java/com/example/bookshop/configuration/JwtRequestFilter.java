@@ -24,7 +24,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter{
 	
-	Logger logger  = Logger.getLogger(JwtRequestFilter.class);
+	Logger log  = Logger.getLogger(JwtRequestFilter.class);
 	
 	@Autowired
 	private JwtUtil jwtUtil;
@@ -35,26 +35,21 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		
 		final String header = request.getHeader("Authorization");
-		
 		String jwtToken = null;
 		String userName = null;
-		
 		if(header !=null && header.startsWith("Bearer ")) {
 			jwtToken= header.substring(7);
 			try {
-				userName =  jwtUtil.getUserNameFromToken(jwtToken);
-				
-				
+				userName =  jwtUtil.getUserNameFromToken(jwtToken);				
 			} catch (IllegalArgumentException e) {
-				logger.error("Unable to get JWT Token");
+					log.error("Unable to get JWT Token");
 				
 			} catch(ExpiredJwtException e) {
-				logger.error("JWT Token is expired");
+				log.error("JWT Token is expired");
 			}
 		}else
-			logger.info("JWT Token Does Not Start With Bearer ");
+			log.info("JWT Token Does Not Start With Bearer ");
 		
 		if(userName != null && SecurityContextHolder.getContext().getAuthentication()==null) {
 			UserDetails userDetails =  jwtService.loadUserByUsername(userName);

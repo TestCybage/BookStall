@@ -41,7 +41,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.cors();
 		httpSecurity.csrf().disable()
-						.authorizeRequests().antMatchers("/authenticate","/signUp").permitAll()
+						.authorizeRequests().antMatchers("/authenticate","/signUp","/disable/**").permitAll()
 						.antMatchers(HttpHeaders.ALLOW).permitAll()
 						.anyRequest().authenticated()
 						.and()
@@ -54,7 +54,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+		PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	

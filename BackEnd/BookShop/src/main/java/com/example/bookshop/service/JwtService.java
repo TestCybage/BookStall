@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.bookshop.entities.JwtRequest;
 import com.example.bookshop.entities.JwtResponse;
+import com.example.bookshop.entities.UserStatus;
 import com.example.bookshop.entities.Users;
 import com.example.bookshop.exception.ErrorMessage;
 import com.example.bookshop.repository.UserRepo;
@@ -32,11 +33,13 @@ public class JwtService implements UserDetailsService {
 
 	@Autowired
 	private JwtUtil jwtUtil;
+	
+	
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
+	public JwtResponse createJwtToken(JwtRequest jwtRequest) throws LoginException {
 		String userName = jwtRequest.getUserName();
 		String userPassword = jwtRequest.getUserPassword();
 		authenticate(userName, userPassword);
@@ -55,6 +58,8 @@ public class JwtService implements UserDetailsService {
 		Users user = dao.findById(userName).orElse(null);
 
 		if (user != null) {
+			if(user.getStatus()==UserStatus.DISABLED)
+				throw new DisabledException("USER is Disabled Please Contact Admin");
 			return new User(user.getUserName(), user.getPassword(), getAuthorities(user));
 		} else {
 			throw new UsernameNotFoundException(ErrorMessage.INVALID_USERNAME);
@@ -65,13 +70,13 @@ public class JwtService implements UserDetailsService {
 	private Set getAuthorities(Users user) {
 		Set authorities = new HashSet<>();
 
-		user.getRole().forEach(role -> {
-			authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
-		});
+		user.getRole().forEach(role ->
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
+		);
 		return authorities;
 	}
 
-	private void authenticate(String userName, String userPassword) throws Exception {
+	private void authenticate(String userName, String userPassword) throws LoginException {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, userPassword));
 		} catch (DisabledException e) {
