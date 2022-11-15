@@ -104,10 +104,5 @@ public class BookService {
 
 	}
 
-	public String clearAllRecords() {
-		dao.deleteAll();
-		authorService.deleteAllAuthors();
-		return "All Books and Authors deleted";
-	}
-
+	
 }

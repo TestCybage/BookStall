@@ -53,7 +53,7 @@ public class AuthorService {
 		return dao.findByAuthorName(name.toUpperCase());
 	}
 	
-	public List<Author> deleteAuthor(int id){
+	public boolean deleteAuthor(int id){
 		Author author = getAuthorById(id);
 		if(author == null)
 			throw new RecordNotFoundException(ErrorMessage.AUTHOR_NOT_FOUND);
@@ -62,11 +62,9 @@ public class AuthorService {
 			bookDao.delete(book);
 		}
 		dao.delete(author);
-		return getAllAuthor();
+		return !dao.existsById(id);
 	}
 	
-	public void deleteAllAuthors() {
-		dao.deleteAll();
-	}
+	
 
 }

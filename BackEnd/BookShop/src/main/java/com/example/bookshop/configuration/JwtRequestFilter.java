@@ -22,13 +22,13 @@ import com.example.bookshop.util.JwtUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 
 @Component
-public class JwtRequestFilter extends OncePerRequestFilter{
-	
-	Logger log  = Logger.getLogger(JwtRequestFilter.class);
-	
+public class JwtRequestFilter extends OncePerRequestFilter {
+
+	Logger log = Logger.getLogger(JwtRequestFilter.class);
+
 	@Autowired
 	private JwtUtil jwtUtil;
-	
+
 	@Autowired
 	private JwtService jwtService;
 
@@ -38,32 +38,27 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		final String header = request.getHeader("Authorization");
 		String jwtToken = null;
 		String userName = null;
-		if(header !=null && header.startsWith("Bearer ")) {
-			jwtToken= header.substring(7);
+		if (header != null && header.startsWith("Bearer ")) {
+			jwtToken = header.substring(7);
 			try {
-				userName =  jwtUtil.getUserNameFromToken(jwtToken);				
+				userName = jwtUtil.getUserNameFromToken(jwtToken);
 			} catch (IllegalArgumentException e) {
-					log.error("Unable to get JWT Token");
-				
-			} catch(ExpiredJwtException e) {
+				log.error("Unable to get JWT Token");
+
+			} catch (ExpiredJwtException e) {
 				log.error("JWT Token is expired");
 			}
-		}else
+		} else
 			log.info("JWT Token Does Not Start With Bearer ");
-		
-		if(userName != null && SecurityContextHolder.getContext().getAuthentication()==null) {
-			UserDetails userDetails =  jwtService.loadUserByUsername(userName);
-			
-			if(jwtUtil.validateToken(jwtToken, userDetails)) {
-				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =  
-						new UsernamePasswordAuthenticationToken(userDetails,
-								null,
-								userDetails.getAuthorities());
-				usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().
-						buildDetails(request));
-				
+
+		if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+			UserDetails userDetails = jwtService.loadUserByUsername(userName);
+			if (jwtUtil.validateToken(jwtToken, userDetails)) {
+				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+						userDetails, null, userDetails.getAuthorities());
+				usernamePasswordAuthenticationToken
+						.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-				
 			}
 		}
 		filterChain.doFilter(request, response);

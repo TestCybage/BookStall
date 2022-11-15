@@ -81,10 +81,6 @@ public class BookController {
 		return new ResponseEntity<>(BookDto.toDto(service.deleteBook(id)), HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/clearAll")
-	public ResponseEntity<String> clearRecords() {
-		return new ResponseEntity<>(service.clearAllRecords(), HttpStatus.OK);
-	}
+	
 
 }

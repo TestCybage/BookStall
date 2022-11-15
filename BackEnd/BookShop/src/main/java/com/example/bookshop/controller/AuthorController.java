@@ -46,8 +46,8 @@ public class AuthorController {
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deleteAuthor/{id}")
-	public ResponseEntity<List<AuthorDto>> deleteAuthor(@PathVariable int id){
-		return new ResponseEntity<>(AuthorDto.toDto(service.deleteAuthor(id)),HttpStatus.OK);
+	public ResponseEntity<Boolean> deleteAuthor(@PathVariable int id){
+		return new ResponseEntity<>(service.deleteAuthor(id), HttpStatus.OK);
 	}
 
 }
