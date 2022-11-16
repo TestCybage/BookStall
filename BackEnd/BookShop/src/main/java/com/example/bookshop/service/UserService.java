@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.example.bookshop.entities.Role;
 import com.example.bookshop.entities.UserStatus;
 import com.example.bookshop.entities.Users;
+import com.example.bookshop.exception.AlreadyEnabledException;
 import com.example.bookshop.exception.AlreadyExistException;
 import com.example.bookshop.exception.EmptyRecordException;
 import com.example.bookshop.exception.ErrorMessage;
@@ -39,6 +40,7 @@ public class UserService {
 	}
 	
 	public Users signUp(Users user) {
+		logger.info(user.getUserName());
 		if(dao.findById(user.getUserName()).orElse(null)!=null)
 			throw new AlreadyExistException(ErrorMessage.USERNAME_EXISTS);
 		if(dao.findByEmail(user.getEmail())!=null)
@@ -86,6 +88,8 @@ public class UserService {
 		Users user = getUserByEmail(email);
 		if(user==null)
 			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);
+		if(user.getStatus()==UserStatus.ENABLED)
+			throw new AlreadyEnabledException(ErrorMessage.USER_NOT_DISABLED);
 		user.setStatus(UserStatus.ENABLED);
 		return dao.save(user);
 	}

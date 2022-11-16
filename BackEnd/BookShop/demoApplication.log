@@ -533,3 +533,169 @@ INFO - 100
 INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
 INFO - 100
 INFO - Aashay
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - 100
+INFO - Aashay
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - 100
+INFO - Aashay
+INFO - Author(authorId=101, authorName=Aashay, books=null, rating=0)
+INFO - 101
+INFO - Aashay
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - 100
+INFO - Aashay
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TestAuthor, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - TestAuthor
+INFO - Author(authorId=100, authorName=TestAuthor, books=null, rating=0)
+INFO - 100
+INFO - TestAuthor
+INFO - TestBook
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TestAuthor, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - TestAuthor
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TestAuthor, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - TestAuthor
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TestAuthor, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - TestAuthor
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - TestAuthor
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TestAuthor, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TestAuthor, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TestAuthor, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+DEBUG - Optional[Book(bookId=100, bookName=TestBook, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)]
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - 100
+INFO - Aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashay@test.com, password=aashay@test, mobileNo=1234567890, status=ENABLED, orders=null, role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashay@test.com, password=aashay@test, mobileNo=1234567890, status=ENABLED, orders=null, role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashay@test.com, password=aashay@test, mobileNo=1234567890, status=ENABLED, orders=null, role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)

@@ -77,8 +77,8 @@ public class BookController {
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deleteBook/{id}")
-	public ResponseEntity<List<BookDto>> deleteBook(@PathVariable int id) {
-		return new ResponseEntity<>(BookDto.toDto(service.deleteBook(id)), HttpStatus.OK);
+	public ResponseEntity<Boolean> deleteBook(@PathVariable int id) {
+		return new ResponseEntity<>(service.deleteBook(id), HttpStatus.OK);
 	}
 
 	

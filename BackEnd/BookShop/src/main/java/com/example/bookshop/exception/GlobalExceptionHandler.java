@@ -35,5 +35,10 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> loginException(LoginException exception){
 		return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(AlreadyEnabledException.class)
+	public ResponseEntity<String> alreadyEnabledException(AlreadyEnabledException exception){
+		return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
+	}
 
 }

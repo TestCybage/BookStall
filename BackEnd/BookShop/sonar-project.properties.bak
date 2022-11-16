@@ -1,0 +1,5 @@
+sonar.projectName=JAVA_MAJOR_PROJECT_REACT_GROUP02
+sonar.projectKey=JAVA_MAJOR_PROJECT_REACT_GROUP02:master
+sonar.sources=./src
+sonar.java.binaries=./target
+sonar.host.url=http://172.27.12.78:8000/

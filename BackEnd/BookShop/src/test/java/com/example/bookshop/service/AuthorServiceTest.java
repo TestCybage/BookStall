@@ -24,22 +24,27 @@ class AuthorServiceTest {
 
 	@MockBean
 	private AuthorRepo dao;
+	
+	int id = 100;
+	
+	String name = "Aashay";
 
 	@Test
 	void testGetAuthorById() {
 		Author author = new Author();
-		author.setAuthorId(100);
-		author.setAuthorName("Aashay");
+		author.setAuthorId(id);
+		author.setAuthorName(name);
 		Optional<Author> author1 = Optional.ofNullable(author);
-		Mockito.when(dao.findById(100)).thenReturn(author1);
-		assertThat(service.getAuthorById(100)).isEqualTo(author);
+		Mockito.when(dao.findById(id)).thenReturn(author1);
+		assertThat(service.getAuthorById(id)).isEqualTo(author);
 	}
 
 	@Test
 	void testAddAuthor() {
 		Author author = new Author();
-		author.setAuthorId(100);
-		author.setAuthorName("Aashay");
+		author.setAuthorId(id);
+		author.setAuthorName(name);
+		
 		Mockito.when(dao.save(author)).thenReturn(author);
 		assertThat(service.addAuthor(author)).isEqualTo(author);
 	}
@@ -47,8 +52,8 @@ class AuthorServiceTest {
 	@Test
 	void testGetAllAuthor() {
 		Author author = new Author();
-		author.setAuthorId(100);
-		author.setAuthorName("Aashay");
+		author.setAuthorId(id);
+		author.setAuthorName(name);
 
 		Author author1 = new Author();
 		author1.setAuthorId(101);
@@ -65,24 +70,21 @@ class AuthorServiceTest {
 	@Test
 	void testGetByAuthorName() {
 		Author author = new Author();
-		author.setAuthorId(100);
-		author.setAuthorName("Aashay");
+		author.setAuthorId(id);
+		author.setAuthorName(name);
 		
-		Mockito.when(dao.findByAuthorName("Aashay".toUpperCase())).thenReturn(author);
-		assertThat(service.getByAuthorName("Aashay")).isEqualTo(author);
+		Mockito.when(dao.findByAuthorName(name.toUpperCase())).thenReturn(author);
+		assertThat(service.getByAuthorName(name)).isEqualTo(author);
 	}
 
 	@Test
 	void testDeleteAuthor() {
 		Author author = new Author();
-		author.setAuthorId(100);
-		author.setAuthorName("Aashay");
+		author.setAuthorId(id);
+		author.setAuthorName(name);
 		Optional<Author> author1 = Optional.ofNullable(author);
-		Mockito.when(dao.findById(100)).thenReturn(author1);
-	System.out.println("initial list"+author1);
-		assertTrue(service.deleteAuthor(100));
-		System.out.println("after list"+author1);
-		
+		Mockito.when(dao.findById(id)).thenReturn(author1);
+		assertTrue(service.deleteAuthor(id));		
 	}
 
 	

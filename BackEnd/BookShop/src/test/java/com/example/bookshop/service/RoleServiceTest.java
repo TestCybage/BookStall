@@ -19,12 +19,10 @@ class RoleServiceTest {
 	
 	@Autowired
 	private RoleService service;
-
+	
 	@Test
 	void testCreateNewRole() {
-		Role role = new Role("Tester","Testing Role Service");
-		service.createNewRole(role);
-		
+		Role role = new Role("Tester","Testing Role Service");		
 		Mockito.when(dao.save(role)).thenReturn(role);
 		assertThat(service.createNewRole(role)).isEqualTo(role);
 	}

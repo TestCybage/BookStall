@@ -83,7 +83,7 @@ public class BookService {
 		return dao.save(book);
 	}
 
-	public List<Book> deleteBook(int id) {
+	public boolean deleteBook(int id) {
 		Book book = getBookById(id);
 		if (book == null)
 			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
@@ -92,7 +92,7 @@ public class BookService {
 			dao.delete(book);
 			if(getBookByAuthorName(book.getAuthor().getAuthorName()).isEmpty())
 				authorService.deleteAuthor(book.getAuthor().getAuthorId());
-			return getAllBooks();
+			return !dao.existsById(id);
 		}
 	}
 
