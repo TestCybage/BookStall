@@ -699,3 +699,20 @@ INFO - aashay
 INFO - Role(roleName=USER, roleDescription=Default role for the user)
 INFO - aashay
 INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - 100
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - 100
+INFO - Aashay
