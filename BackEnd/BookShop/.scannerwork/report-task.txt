@@ -2,5 +2,5 @@ projectKey=BOOKSTALL:master
 serverUrl=http://172.27.12.78:8000
 serverVersion=7.9.6.41879
 dashboardUrl=http://172.27.12.78:8000/dashboard?id=BOOKSTALL%3Amaster
-ceTaskId=AYSAawf402ASefZCyhOp
-ceTaskUrl=http://172.27.12.78:8000/api/ce/task?id=AYSAawf402ASefZCyhOp
+ceTaskId=AYTRnNxM02ASefZCyhPL
+ceTaskUrl=http://172.27.12.78:8000/api/ce/task?id=AYTRnNxM02ASefZCyhPL
