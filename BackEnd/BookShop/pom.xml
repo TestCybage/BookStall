@@ -77,6 +77,12 @@
 			<version>2.0.2-beta</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.7.9</version>
+		</dependency>
+
 
 	</dependencies>
 
