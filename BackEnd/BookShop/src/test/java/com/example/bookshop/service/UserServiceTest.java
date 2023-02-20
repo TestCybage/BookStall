@@ -1,6 +1,8 @@
 package com.example.bookshop.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,29 +31,27 @@ class UserServiceTest {
 	String name = "Aashay Kadu";
 	String email = "aashay@test.com";
 	String pass = "aashay@test";
-	String mobile="1234567890";
-	
+	String mobile = "1234567890";
+
 	Role userRole = new Role();
 	Role adminRole = new Role();
 	Set<Role> roles = new HashSet<>();
-	
 
 	public UserServiceTest() {
-		
+
 		user.setUserName(id);
 		user.setName(name);
 		user.setEmail(email);
 		user.setPassword(pass);
 		user.setMobileNo(mobile);
 		user.setStatus(UserStatus.ENABLED);
-		
+
 		userRole.setRoleName("USER");
 		userRole.setRoleDescription("Default role for the user");
-		
+
 		adminRole.setRoleName("ADMIN");
 		adminRole.setRoleDescription("ADMIN role");
 
-		
 		roles.add(userRole);
 		user.setRole(roles);
 	}
@@ -61,10 +61,10 @@ class UserServiceTest {
 
 	@MockBean
 	private UserRepo dao;
-	
+
 	@MockBean
 	private RoleRepo roleDao;
-	
+
 	@MockBean
 	private PasswordEncoder encoder;
 
@@ -76,10 +76,10 @@ class UserServiceTest {
 
 	@Test
 	void testSignUp() {
-		
+
 		Mockito.when(dao.findById(id)).thenReturn(Optional.ofNullable(null));
 		Mockito.when(dao.findByEmail(email)).thenReturn(null);
-		
+
 		Optional<Role> role = Optional.ofNullable(userRole);
 		Mockito.when(roleDao.findById("USER")).thenReturn(role);
 		Mockito.when(encoder.encode(pass)).thenReturn(pass);
@@ -123,6 +123,37 @@ class UserServiceTest {
 		users.add(user);
 		Mockito.when(dao.findByStatus(UserStatus.DISABLED)).thenReturn(users);
 		assertThat(service.getDisabledUsers()).isEqualTo(users);
+	}
+
+	@Test
+	void testInitRolesAndUsers() {
+
+		Users adminUser = new Users();
+		adminUser.setUserName("Admin");
+		adminUser.setName("Admin");
+		adminUser.setEmail("admin@gmail.com");
+		adminUser.setMobileNo("1234567980");
+		adminUser.setPassword(encoder.encode("admin@pass"));
+//		adminUser.setPassword((getEncodedPassword("admin@pass"));
+		Set<Role> adminRoles = new HashSet<>();
+		adminRoles.add(adminRole);
+		adminUser.setRole(adminRoles);
+
+		Mockito.when(roleDao.save(adminRole)).thenReturn(adminRole);
+		Mockito.when(roleDao.save(userRole)).thenReturn(userRole);
+		Mockito.when(dao.save(adminUser)).thenReturn(adminUser);
+//		doNothing().when(roleDao).save(adminRole);
+//		doNothing().when(roleDao).save(userRole);
+//		doNothing().when(dao).save(adminUser);
+
+		// Act
+
+		service.initRolesAndUsers();
+
+		// Assert
+		verify(roleDao, times(1)).save(adminRole);
+		verify(roleDao, times(1)).save(userRole);
+		verify(dao, times(1)).save(adminUser);
 	}
 
 }

@@ -23,6 +23,8 @@ public class OrdersDto {
 	private List<OrderedBook> orderedBook;
 
 	private OrderStatus status;
+	
+	private double amount;
 
 	private Users user;
 

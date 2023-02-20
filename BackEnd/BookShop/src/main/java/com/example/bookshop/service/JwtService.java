@@ -33,8 +33,6 @@ public class JwtService implements UserDetailsService {
 
 	@Autowired
 	private JwtUtil jwtUtil;
-	
-	
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -43,10 +41,10 @@ public class JwtService implements UserDetailsService {
 		String userName = jwtRequest.getUserName();
 		String userPassword = jwtRequest.getUserPassword();
 		authenticate(userName, userPassword);
-		
+
 		final UserDetails userDetails = loadUserByUsername(userName);
-		String newGeneratedToken = jwtUtil.generateToke(userDetails);
-		Users user =  dao.findById(userName).orElse(null);
+		String newGeneratedToken = jwtUtil.generateToken(userDetails);
+		Users user = dao.findById(userName).orElse(null);
 		return new JwtResponse(user, newGeneratedToken);
 
 	}
@@ -58,7 +56,7 @@ public class JwtService implements UserDetailsService {
 		Users user = dao.findById(userName).orElse(null);
 
 		if (user != null) {
-			if(user.getStatus()==UserStatus.DISABLED)
+			if (user.getStatus() == UserStatus.DISABLED)
 				throw new DisabledException("USER is Disabled Please Contact Admin");
 			return new User(user.getUserName(), user.getPassword(), getAuthorities(user));
 		} else {
@@ -67,12 +65,10 @@ public class JwtService implements UserDetailsService {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private Set getAuthorities(Users user) {
+	Set getAuthorities(Users user) {
 		Set authorities = new HashSet<>();
 
-		user.getRole().forEach(role ->
-			authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
-		);
+		user.getRole().forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName())));
 		return authorities;
 	}
 

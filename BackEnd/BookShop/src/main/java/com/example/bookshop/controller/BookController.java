@@ -2,6 +2,7 @@ package com.example.bookshop.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bookshop.dto.BookDto;
 import com.example.bookshop.entities.Book;
+import com.example.bookshop.exception.EmptyRecordException;
 import com.example.bookshop.exception.ErrorMessage;
 import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.service.BookService;
@@ -29,8 +31,10 @@ public class BookController {
 
 	@Autowired
 	private BookService service;
+	
+	Logger logger = Logger.getLogger(BookController.class);
 
-	@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','USER')")
 	@GetMapping("/getAllBooks")
 	public ResponseEntity<List<BookDto>> getAllBooks() {
 		return new ResponseEntity<>(BookDto.toDto(service.getAllBooks()), HttpStatus.OK);
@@ -39,7 +43,10 @@ public class BookController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/getBook/{id}")
 	public ResponseEntity<BookDto> getBookById(@PathVariable int id) {
-		return new ResponseEntity<>(BookDto.toDto(service.getBookById(id)), HttpStatus.OK);
+		Book book = service.getBookById(id);
+		if(book==null)
+			throw new EmptyRecordException(ErrorMessage.BOOK_NOT_FOUND);
+		return new ResponseEntity<>(BookDto.toDto(book), HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAnyRole('USER','ADMIN')")
@@ -60,6 +67,7 @@ public class BookController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/addBook")
 	public ResponseEntity<BookDto> addBook(@RequestBody BookDto bookDto) {
+		
 		return new ResponseEntity<>(BookDto.toDto(service.addBook(BookDto.toEntity(bookDto))), HttpStatus.CREATED);
 	}
 

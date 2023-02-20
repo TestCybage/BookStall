@@ -23,12 +23,12 @@ public class JwtUtil {
 		return getClaimFromToken(token, Claims::getSubject);
 	}
 	
-	private <T> T getClaimFromToken(String token,Function<Claims, T> claimResolver) {
+	 <T> T getClaimFromToken(String token,Function<Claims, T> claimResolver) {
 		final Claims claims =  getAllClaimsFromToken(token);
 		return claimResolver.apply(claims);
 	}
 	
-	private Claims getAllClaimsFromToken(String token) {
+	Claims getAllClaimsFromToken(String token) {
 		return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
 	}
 	
@@ -42,11 +42,11 @@ public class JwtUtil {
 		return expirationDate.before(new Date());
 	}
 	
-	private Date getExpirationDateFromToken(String token) {
+	Date getExpirationDateFromToken(String token) {
 		return getClaimFromToken(token, Claims::getExpiration);
 	}
 	
-	public String generateToke(UserDetails userDetails) {
+	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
 		return Jwts.builder()
 				.setClaims(claims)

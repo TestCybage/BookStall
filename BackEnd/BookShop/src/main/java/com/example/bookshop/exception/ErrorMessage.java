@@ -32,5 +32,7 @@ public class ErrorMessage {
 	public static final String BAD_CREDENTIALS = "Bad Credentials from User";
 	
 	public static final String USER_NOT_DISABLED = "User is not disabled";
+	
+	public static final String ORDER_EMPTY = "Order is Empty";
 
 }

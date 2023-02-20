@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,9 @@ public class Orders {
 
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
+	
+	@NotNull
+	private double amount;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Users user;
