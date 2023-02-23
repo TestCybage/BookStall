@@ -21,11 +21,11 @@ class JwtUtilTest {
     @Mock
     private UserDetails userDetails;
 
-    private final JwtUtil jwtUtil = new JwtUtil();
-    private final String username = "testuser";
-    private final String jwtSecret = "AashaySecret_123";
-    private final int jwtTokenValidity = 3600 * 5;
-    private final String jwtToken = Jwts.builder()
+    private JwtUtil jwtUtil = new JwtUtil();
+    private String username = "testuser";
+    private String jwtSecret = "AashaySecret_123";
+    private int jwtTokenValidity = 3600 * 5;
+    private String jwtToken = Jwts.builder()
             .setSubject(username)
             .setIssuedAt(new Date())
             .setExpiration(new Date(System.currentTimeMillis() + jwtTokenValidity * 1000))

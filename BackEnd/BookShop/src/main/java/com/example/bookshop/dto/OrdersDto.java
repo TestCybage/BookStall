@@ -41,10 +41,10 @@ public class OrdersDto {
 	}
 
 	public static List<OrdersDto> toDto(List<Orders> entityList) {
-		return entityList.stream().map(entity -> toDto(entity)).toList();
+		return entityList.stream().map(OrdersDto::toDto).toList();
 	}
 
 	public static List<Orders> toEntity(List<OrdersDto> dtoList) {
-		return dtoList.stream().map(dto -> toEntity(dto)).toList();
+		return dtoList.stream().map(OrdersDto::toEntity).toList();
 	}
 }

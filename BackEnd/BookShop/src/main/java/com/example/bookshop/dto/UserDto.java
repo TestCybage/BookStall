@@ -49,11 +49,11 @@ public class UserDto {
 	}
 
 	public static List<UserDto> toDto(List<Users> entityList) {
-		return entityList.stream().map(entity -> toDto(entity)).toList();
+		return entityList.stream().map(UserDto::toDto).toList();
 	}
 
 	public static List<Users> toEntity(List<UserDto> dtoList) {
-		return dtoList.stream().map(dto -> toEntity(dto)).toList();
+		return dtoList.stream().map(UserDto::toEntity).toList();
 	}
 
 }

@@ -14,21 +14,18 @@ import com.example.bookshop.service.UserService;
 @RequestMapping("/user")
 @PreAuthorize("hasRole('USER')")
 public class UserController {
-	
+
 	@Autowired
 	private UserService service;
-	
+
 	@PostConstruct
 	public void initRolesAndUsers() {
 		service.initRolesAndUsers();
 	}
-	
+
 	@GetMapping("/forUser")
 	public String forUser() {
 		return "This URL is only accessible to USER";
 	}
-	
-	
-	
 
 }

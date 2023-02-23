@@ -33,7 +33,6 @@ class UserRepoTest {
 
 	String userName = "Naruto";
 	String email = "naruto@gmail.com";
-	String password = "password";
 	String mobileNo = "9988776655";
 
 	@BeforeEach
@@ -42,7 +41,7 @@ class UserRepoTest {
 		user.setUserName(userName);
 		user.setName(userName);
 		user.setEmail(email);
-		user.setPassword(encoder.encode(password));
+		user.setPassword(encoder.encode("password"));
 		user.setMobileNo(mobileNo);
 		user.setStatus(UserStatus.DISABLED);
 		Role testUser = new Role();
@@ -52,7 +51,6 @@ class UserRepoTest {
 		Set<Role> roles = new HashSet<>();
 		roles.add(testUser);
 		user.setRole(roles);
-		System.out.println(user);
 		dao.save(user);
 	}
 
@@ -73,7 +71,7 @@ class UserRepoTest {
 	void testFindByStatus() {
 		List<Users> disabledUsers = dao.findByStatus(UserStatus.DISABLED);
 		assertNotNull(disabledUsers);
-		List<String> disabledUserList = disabledUsers.stream().map(user -> user.getEmail()).toList();
+		List<String> disabledUserList = disabledUsers.stream().map(Users::getEmail).toList();
 		List<String> list = new ArrayList<>();
 		list.add(email);
 		assertEquals(list.get(0), disabledUserList.get(0));

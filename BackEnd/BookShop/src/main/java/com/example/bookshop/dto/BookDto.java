@@ -39,7 +39,7 @@ public class BookDto {
 	}
 	
 	public static List<BookDto> toDto(List<Book> listEntity){
-		return listEntity.stream().map(entity -> toDto(entity)).toList();
+		return listEntity.stream().map(BookDto::toDto).toList();
 	}
 
 	public static Book toEntity(BookDto dto) {
@@ -49,7 +49,7 @@ public class BookDto {
 	}
 	
 	public static List<Book> toEntity(List<BookDto> listDto){
-		return listDto.stream().map(dto -> toEntity(dto)).toList();
+		return listDto.stream().map(BookDto::toEntity).toList();
 	}
 
 

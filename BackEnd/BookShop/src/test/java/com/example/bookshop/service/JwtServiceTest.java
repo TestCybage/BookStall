@@ -41,6 +41,9 @@ class JwtServiceTest {
 
 	    @InjectMocks
 	    private JwtService jwtService;
+	    
+	    String testUser = "testuser";
+	    String testPass = "testpassword";
 
 	    @SuppressWarnings("deprecation")
 		public JwtServiceTest() {
@@ -48,14 +51,14 @@ class JwtServiceTest {
 	    }
 
 	    @Test
-	    public void testCreateJwtToken() throws LoginException {
+	     void testCreateJwtToken() throws LoginException {
 	        JwtRequest jwtRequest = new JwtRequest();
-	        jwtRequest.setUserName("testuser");
-	        jwtRequest.setUserPassword("testpassword");
+	        jwtRequest.setUserName(testUser);
+	        jwtRequest.setUserPassword(testPass);
 
 	        Users user = new Users();
-	        user.setUserName("testuser");
-	        user.setPassword("testpassword");
+	        user.setUserName(testUser);
+	        user.setPassword(testPass);
 	        user.setStatus(UserStatus.ENABLED);
 
 	        Role role = new Role();
@@ -77,10 +80,10 @@ class JwtServiceTest {
 	    }
 
 	    @Test
-	    public void testLoadUserByUsername() {
+	     void testLoadUserByUsername() {
 	        Users user = new Users();
-	        user.setUserName("testuser");
-	        user.setPassword("testpassword");
+	        user.setUserName(testUser);
+	        user.setPassword(testPass);
 	        user.setStatus(UserStatus.ENABLED);
 
 	        Role role = new Role();
@@ -92,7 +95,7 @@ class JwtServiceTest {
 
 	        when(dao.findById(Mockito.anyString())).thenReturn(java.util.Optional.of(user));
 
-	        UserDetails userDetails = jwtService.loadUserByUsername("testuser");
+	        UserDetails userDetails = jwtService.loadUserByUsername(testUser);
 
 	        Assertions.assertEquals(user.getUserName(), userDetails.getUsername());
 	        Assertions.assertEquals(user.getPassword(), userDetails.getPassword());
@@ -103,9 +106,9 @@ class JwtServiceTest {
 	     void testLoadUserByUsernameWithInvalidUsername() {
 	        when(dao.findById(Mockito.anyString())).thenReturn(java.util.Optional.empty());
 
-	        Assertions.assertThrows(UsernameNotFoundException.class, () -> {
-	            jwtService.loadUserByUsername("invaliduser");
-	        });
+	        Assertions.assertThrows(UsernameNotFoundException.class, () -> 
+	            jwtService.loadUserByUsername("invaliduser")
+	        );
 	    }
 
 	    @SuppressWarnings("unused")

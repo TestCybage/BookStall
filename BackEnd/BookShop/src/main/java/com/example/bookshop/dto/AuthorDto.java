@@ -33,10 +33,10 @@ public class AuthorDto {
 	}
 
 	public static List<AuthorDto> toDto(List<Author> entityList) {
-		return entityList.stream().map(entity -> toDto(entity)).toList();
+		return entityList.stream().map(AuthorDto::toDto).toList();
 	}
 
 	public static List<Author> toEntity(List<AuthorDto> dtoList) {
-		return dtoList.stream().map(dto -> toEntity(dto)).toList();
+		return dtoList.stream().map(AuthorDto::toEntity).toList();
 	}
 }

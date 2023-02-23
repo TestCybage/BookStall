@@ -134,7 +134,6 @@ class UserServiceTest {
 		adminUser.setEmail("admin@gmail.com");
 		adminUser.setMobileNo("1234567980");
 		adminUser.setPassword(encoder.encode("admin@pass"));
-//		adminUser.setPassword((getEncodedPassword("admin@pass"));
 		Set<Role> adminRoles = new HashSet<>();
 		adminRoles.add(adminRole);
 		adminUser.setRole(adminRoles);
@@ -142,15 +141,9 @@ class UserServiceTest {
 		Mockito.when(roleDao.save(adminRole)).thenReturn(adminRole);
 		Mockito.when(roleDao.save(userRole)).thenReturn(userRole);
 		Mockito.when(dao.save(adminUser)).thenReturn(adminUser);
-//		doNothing().when(roleDao).save(adminRole);
-//		doNothing().when(roleDao).save(userRole);
-//		doNothing().when(dao).save(adminUser);
-
-		// Act
 
 		service.initRolesAndUsers();
 
-		// Assert
 		verify(roleDao, times(1)).save(adminRole);
 		verify(roleDao, times(1)).save(userRole);
 		verify(dao, times(1)).save(adminUser);

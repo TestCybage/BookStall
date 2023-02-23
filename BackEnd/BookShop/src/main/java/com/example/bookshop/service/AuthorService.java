@@ -38,7 +38,7 @@ public class AuthorService {
 		if (getByAuthorName(author.getAuthorName()) == null) {
 			author.setAuthorName(author.getAuthorName().toUpperCase()); 
 			return dao.save(author);
-		} else
+		} 
 			throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);
 	}
 

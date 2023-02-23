@@ -71,8 +71,8 @@ class BookRepoTest {
 		assertEquals(author.getAuthorName(), testAuthor.getAuthorName());
 		List<Book> books = dao.findByAuthor(author);
 		assertNotNull(books);
-		List<String> bookNames =  books.stream().map(book -> book.getBookName()).toList();
-		List<String> testBookNames = testBooks.stream().map(testBook1 -> testBook1.getBookName()).toList();
+		List<String> bookNames =  books.stream().map(Book::getBookName).toList();
+		List<String> testBookNames = testBooks.stream().map(Book::getBookName).toList();
 		assertEquals(bookNames, testBookNames);
 	}
 
@@ -86,10 +86,10 @@ class BookRepoTest {
 		testBook.setAuthor(testAuthor);
 		List<Book> testBooks = new ArrayList<>();
 		testBooks.add(testBook);
-		List<String> testBookNames = testBooks.stream().map(name -> name.getBookName()).toList();
+		List<String> testBookNames = testBooks.stream().map(Book::getBookName).toList();
 		List<Book> books = dao.findByBookNameContaining(searchBook);
 		assertNotNull(books);
-		List<String> bookNames = books.stream().map(name -> name.getBookName()).toList();
+		List<String> bookNames = books.stream().map(Book::getBookName).toList();
 		assertEquals(testBookNames, bookNames);
 	}
 

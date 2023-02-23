@@ -43,10 +43,10 @@ public class OrderedBookDto {
 	}
 
 	public static List<OrderedBookDto> toDto(List<OrderedBook> entityList) {
-		return entityList.stream().map(entity -> toDto(entity)).toList();
+		return entityList.stream().map(OrderedBookDto::toDto).toList();
 	}
 
 	public static List<OrderedBook> toEntity(List<OrderedBookDto> dtoList) {
-		return dtoList.stream().map(dto -> toEntity(dto)).toList();
+		return dtoList.stream().map(OrderedBookDto::toEntity).toList();
 	}
 }
