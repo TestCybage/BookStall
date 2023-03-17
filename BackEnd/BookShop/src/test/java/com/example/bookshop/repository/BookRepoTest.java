@@ -92,5 +92,4 @@ class BookRepoTest {
 		List<String> bookNames = books.stream().map(Book::getBookName).toList();
 		assertEquals(testBookNames, bookNames);
 	}
-
 }

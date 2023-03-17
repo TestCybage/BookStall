@@ -35,4 +35,7 @@ public class ErrorMessage {
 	
 	public static final String ORDER_EMPTY = "Order is Empty";
 
+	public static final String ORDER_NOT_FOUND = "Order not found";
+	
+	public static final String EMAIL_FAILED="Failed to send email";
 }

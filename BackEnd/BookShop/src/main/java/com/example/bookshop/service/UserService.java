@@ -112,5 +112,9 @@ public class UserService {
 			throw new EmptyRecordException(ErrorMessage.USER_LIST_EMPTY);
 		return users;
 	}	
+	
+	public List<Users> getAllUsers(){
+		return dao.findAll();
+	}
 
 }

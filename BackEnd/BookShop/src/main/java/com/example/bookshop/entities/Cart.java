@@ -3,14 +3,10 @@ package com.example.bookshop.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,22 +16,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Orders {
+public class Cart {
 
 	@Id
 	@GeneratedValue
-	private int orderId;
-	
-	@OneToMany
-	private List<Book> orderedBooks;
+	private int cartId;
 
-	@Enumerated(EnumType.STRING)
-	private OrderStatus status;
-	
-	@NotNull
+	@OneToMany
+	private List<Book> books;
+
 	private double amount;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToOne
 	private Users user;
 
 }

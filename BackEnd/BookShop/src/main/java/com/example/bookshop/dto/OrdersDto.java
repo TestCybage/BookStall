@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
+import com.example.bookshop.entities.Book;
 import com.example.bookshop.entities.OrderStatus;
-import com.example.bookshop.entities.OrderedBook;
 import com.example.bookshop.entities.Orders;
 import com.example.bookshop.entities.Users;
 
@@ -20,7 +20,7 @@ public class OrdersDto {
 
 	private int orderId;
 
-	private List<OrderedBook> orderedBook;
+	private List<Book> orderedBooks;
 
 	private OrderStatus status;
 	

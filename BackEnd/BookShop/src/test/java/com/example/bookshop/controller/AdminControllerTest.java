@@ -31,7 +31,7 @@ class AdminControllerTest {
 
 	@InjectMocks
 	private AdminController adminController;
-	
+
 	@Test
 	@WithMockUser(authorities = "ADMIN")
 	void testForAdmin() {
@@ -47,9 +47,7 @@ class AdminControllerTest {
 		Users user = new Users("user1@example.com", "user1", "user1@example.com", "pass1234", "9988556622",
 				UserStatus.ENABLED, null, roles);
 		when(userService.unblockUser("user1@example.com")).thenReturn(user);
-
 		ResponseEntity<UserDto> response = adminController.unblockUser("user1@example.com");
-
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertEquals("user1@example.com", response.getBody().getEmail());
 		assertEquals(UserStatus.ENABLED, response.getBody().getStatus());
@@ -66,11 +64,8 @@ class AdminControllerTest {
 				UserStatus.DISABLED, null, roles));
 		disabledUsers.add(new Users("user2@example.com", "user2", "user2@example.com", "pass1234", "9988556611",
 				UserStatus.DISABLED, null, roles));
-
 		when(userService.getDisabledUsers()).thenReturn(disabledUsers);
-
 		ResponseEntity<List<UserDto>> response = adminController.getDisabledUsers();
-
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertEquals(2, response.getBody().size());
 		assertEquals("user1@example.com", response.getBody().get(0).getEmail());
