@@ -14,7 +14,6 @@ import com.example.bookshop.exception.ErrorMessage;
 import lombok.AllArgsConstructor;
 
 @Service
-@AllArgsConstructor
 public class EmailService {
 	
 	@Autowired

@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.bookshop.dto.CartDto;
 import com.example.bookshop.dto.OrdersDto;
 import com.example.bookshop.service.OrderService;
 
@@ -34,9 +32,9 @@ public class OrderController {
 		return new ResponseEntity<>(OrdersDto.toDto(service.getOrderByUserName(userName)), HttpStatus.OK);
 	}
 	
-	@PostMapping("/addOrder")
-	public ResponseEntity<OrdersDto> addOrder(@RequestBody CartDto dto){
-		return new ResponseEntity<>(OrdersDto.toDto(service.addOrder(CartDto.toEntity(dto))), HttpStatus.OK);
+	@PostMapping("/addOrder/{userName}")
+	public ResponseEntity<OrdersDto> addOrder(@PathVariable String userName){
+		return new ResponseEntity<>(OrdersDto.toDto(service.addOrder(userName)), HttpStatus.OK);
 	}
 	
 	@PatchMapping("/cancelOrder/{id}")

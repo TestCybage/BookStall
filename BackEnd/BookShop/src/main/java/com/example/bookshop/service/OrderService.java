@@ -30,6 +30,9 @@ public class OrderService {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	private BookService bookService;
 
 	Logger logger = Logger.getLogger(OrderService.class);
 
@@ -44,13 +47,19 @@ public class OrderService {
 		return dao.findById(id).orElse(null);
 	}
 
-	public Orders addOrder(Cart cart) {
-		logger.info(cart);
+	public Orders addOrder(String userName) {
+		logger.info(userName);
+		Cart cart = cartService.getCartByUserName(userName);
+		
 		Orders order = new Orders();
 		order.setOrderedBooks(cart.getBooks());
 		order.setAmount(cart.getAmount());
 		order.setUser(cart.getUser());
 		order.setStatus(OrderStatus.COMPLETED);
+		for(Book book:cart.getBooks()) {
+			bookService.editQuantity(book.getBookId(), book.getInStock()-1);
+			bookService.changeCopiesSold(book.getBookId(), 1);
+		}
 		cartService.emptyCart(cart.getUser().getUserName());
 		logger.info(cart);
 		sendInvoice(order);

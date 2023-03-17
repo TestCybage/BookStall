@@ -82,6 +82,17 @@ public class BookService {
 		book.setInStock(quantity);
 		return dao.save(book);
 	}
+	
+	public void changeCopiesSold(int id,int copies) {
+		logger.info(id);
+		if(copies<0)
+			throw new InvalidInputException(ErrorMessage.INVALID_INPUT_QUANTITY);
+		Book book = getBookById(id);
+		if(book==null)
+			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
+		book.setCopiesSold(book.getCopiesSold()+copies);
+		dao.save(book);
+	}
 
 	public boolean deleteBook(int id) {
 		Book book = getBookById(id);

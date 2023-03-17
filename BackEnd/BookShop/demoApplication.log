@@ -982,3 +982,109 @@ INFO - 100
 INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
 INFO - 100
 INFO - Aashay
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Book(bookId=0, bookName=INDIA BHARAT AND PAKISTAN, author=Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0), description=Journey of Sandwitched Nation, inStock=200, copiesSold=0, price=500.0, rating=0)
+INFO - 0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - J Sai Deepak
+INFO - Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0)
+INFO - 0
+INFO - J Sai Deepak
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - 0.0
+INFO - 500.0
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - 0.0
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - 0.0
+INFO - 500.0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - 0.0
+INFO - 500.0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - 0.0
+INFO - 500.0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 1 aashay
+INFO - 2
+INFO - 0.0
+INFO - 500.0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - 0.0
+INFO - 1000.0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashayk
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 1 2 aashay
+INFO - 1
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - 0.0
+INFO - 1000.0
+INFO - INDIA BHARAT AND PAKISTAN
