@@ -1,7 +1,8 @@
 package com.example.bookshop.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ public class CartService {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private BookService bookService;
-	
+
 	Logger log = Logger.getLogger(CartService.class);
 
 	public Cart getCartByUserName(String userName) {
@@ -36,36 +37,39 @@ public class CartService {
 	}
 
 	public Cart addToCart(int bookId, int quantity, String userName) {
-		log.info(bookId+" "+quantity+" "+userName);
-		if(getCartByUserName(userName)==null) {
+		log.info(bookId + " " + quantity + " " + userName);
+		if (getCartByUserName(userName) == null) {
 			Cart cart1 = new Cart();
-				cart1.setUser(userService.getById(userName));
-				cart1.setBooks(new ArrayList<>());
-				cart1.setAmount(0);
-				dao.save(cart1);
+			cart1.setUser(userService.getById(userName));
+			cart1.setBooks(new HashMap<>());
+			cart1.setAmount(0);
+			dao.save(cart1);
 		}
 		Cart cart = getCartByUserName(userName);
-		List<Book> books = cart.getBooks();
+		Map<String, Integer> books = cart.getBooks();
+		Set<String> bookNames = books.keySet();
 		Book book = bookService.getBookById(bookId);
-		if(book==null)
+		if (book == null)
 			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
-		double amount = cart.getAmount();
-		log.info(amount);
-		for (int i = 0; i < quantity; i++) {
-			books.add(book);
-			amount = amount + book.getPrice();
+		books.putIfAbsent(book.getBookName(), quantity);
+		if (books.containsKey(book.getBookName()))
+			books.replace(book.getBookName(), books.get(book.getBookName()) + quantity);
+		double amount = 0;
+		for (String name : bookNames) {
+			amount = amount + bookService.getBookByName(name).getPrice() * books.get(name);
 		}
+
+		log.info(amount);
+
 		cart.setBooks(books);
 		cart.setAmount(amount);
 		log.info(cart.getAmount());
-		log.info(cart.getBooks().get(0).getBookName());
-		return cart;
+		return dao.save(cart);
 	}
-	
+
 	public Cart emptyCart(String userName) {
 		Cart cart = getCartByUserName(userName);
-		cart.setAmount(0);
-		cart.setBooks(null);
-		return dao.save(cart);
+		dao.delete(cart);
+		return null;
 	}
 }

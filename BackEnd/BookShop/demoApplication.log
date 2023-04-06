@@ -1088,3 +1088,597 @@ INFO - 2
 INFO - 0.0
 INFO - 1000.0
 INFO - INDIA BHARAT AND PAKISTAN
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - 0.0
+INFO - 1000.0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - 0.0
+INFO - 1000.0
+INFO - INDIA BHARAT AND PAKISTAN
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Book(bookId=0, bookName=INDIA BHARAT AND PAKISTAN, author=Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0), description=Journey of Sandwitched Nation, inStock=200, copiesSold=0, price=500.0, rating=0)
+INFO - 0
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - J Sai Deepak
+INFO - Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0)
+INFO - 0
+INFO - J Sai Deepak
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - 0.0
+INFO - 1000.0
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 2 198
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - Cart(cartId=3, books={INDIA BHARAT AND PAKISTAN=2}, amount=1000.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:0<br/>User Name:Aashay Kadu<br/> Order Amount: 1000.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'><tr>  <td>Book Name</td>  <td>Author Name </td>  <td>Book Price</td></tr>
+</tr>
+		<td>INDIA BHARAT AND PAKISTAN</td>
+		<td>J SAI DEEPAK</td>
+		<td>500.0</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 0, 2023-03-27
+INFO - aashayk@cybage.com
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 2 196
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - Cart(cartId=3, books={INDIA BHARAT AND PAKISTAN=2}, amount=1000.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:0<br/>User Name:Aashay Kadu<br/> Order Amount: 1000.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'><tr>  <td>Book Name</td>  <td>Author Name </td>  <td>Book Price</td></tr>
+</tr>
+		<td>INDIA BHARAT AND PAKISTAN</td>
+		<td>J SAI DEEPAK</td>
+		<td>500.0</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 0, 2023-03-30
+INFO - aashayk@cybage.com
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 2 194
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - Cart(cartId=3, books={INDIA BHARAT AND PAKISTAN=2}, amount=1000.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:0<br/>User Name:Aashay Kadu<br/> Order Amount: 1000.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'><tr>  <td>Book Name</td>  <td>Author Name </td>  <td>Book Price</td></tr>
+</tr>
+		<td>INDIA BHARAT AND PAKISTAN</td>
+		<td>J SAI DEEPAK</td>
+		<td>500.0</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 0, 2023-03-30
+INFO - aashayk@cybage.com
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 2 192
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - Cart(cartId=3, books={INDIA BHARAT AND PAKISTAN=2}, amount=1000.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:0<br/>User Name:Aashay Kadu<br/> Order Amount: 1000.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'><tr>  <td>Book Name</td>  <td>Author Name </td>  <td>Book Price</td>  <td>Quantity</td></tr>
+</tr>
+		<td>INDIA BHARAT AND PAKISTAN</td>
+		<td>J SAI DEEPAK</td>
+		<td>500.0</td>
+		<td>2</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 0, 2023-03-30
+INFO - aashayk@cybage.com
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - 1000.0
+INFO - 2000.0
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - 2000.0
+INFO - 3000.0
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 2 188
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - Cart(cartId=3, books={INDIA BHARAT AND PAKISTAN=4}, amount=3000.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 2 184
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - Cart(cartId=3, books={INDIA BHARAT AND PAKISTAN=4}, amount=3000.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=4}, status=COMPLETED, amount=3000.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - 2
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 2000.0
+INFO - 2000.0
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - 2
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 3000.0
+INFO - 3000.0
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - 2
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - 4000.0
+INFO - 4000.0
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Book(bookId=0, bookName=INDIA THAT IS BHARAT, author=Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0), description=India Political History, inStock=200, copiesSold=0, price=400.0, rating=0)
+INFO - 0
+INFO - INDIA THAT IS BHARAT
+INFO - J Sai Deepak
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 9 2 aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - 9
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 5600.0
+INFO - 5600.0
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 9 2 aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - 9
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 6400.0
+INFO - 6400.0
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 176
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 194
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:0<br/>User Name:Aashay Kadu<br/> Order Amount: 6400.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'></tr>  <th>Book Name</th>  <th>Author Name </th>  <th>Book Price</th>  <th>Quantity</th></tr>
+</tr>
+		<td>INDIA BHARAT AND PAKISTAN</td>
+		<td>J SAI DEEPAK</td>
+		<td>500.0</td>
+		<td>8</td>
+</tr></tr>
+</tr>
+		<td>INDIA THAT IS BHARAT</td>
+		<td>J SAI DEEPAK</td>
+		<td>400.0</td>
+		<td>6</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 0, 2023-03-30
+INFO - aashayk@cybage.com
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 168
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 188
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 160
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 182
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 152
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 176
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 144
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 170
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={com.example.bookshop.entities.Book@63bc71a=8, com.example.bookshop.entities.Book@4049f0ff=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 136
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 164
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 128
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 158
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={2=8, 9=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 120
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 152
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 112
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 146
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 104
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 140
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - 2 96
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - 9 134
+INFO - 9
+INFO - 9
+INFO - 9
+INFO - Cart(cartId=8, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - Orders(orderId=0, books={INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}, status=COMPLETED, amount=6400.0, user=Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], role=[Role(roleName=USER, roleDescription=Default role for the user)]))
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Users(userName=aashay, name=Aashay Kadu, email=aashayk@cybage.com, password=$2a$10$B8JQxQuI8EW6BoOs.Nx9SedTvKpx59WcREBf8PeOPI7pgRaM0LI/O, mobileNo=1234567890, status=ENABLED, orders=[], address=[], role=[Role(roleName=USER, roleDescription=Default role for the user)])
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - India that is bhara
+INFO - JWT Token Does Not Start With Bearer 
+INFO - J Sai Deepak
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 

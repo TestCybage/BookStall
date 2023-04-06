@@ -38,4 +38,12 @@ public class ErrorMessage {
 	public static final String ORDER_NOT_FOUND = "Order not found";
 	
 	public static final String EMAIL_FAILED="Failed to send email";
+	
+	public static final String EMPTY_CART="Cart is Empty";
+	
+	public static final String ADDRESS_NOT_FOUND = "Address not found";
+	
+	public static final String INVALID_ADDRESS_ID="Address Id does not belong to user";
+	
+	public static final String OLD_PASSWORD="Old password not allowed";
 }

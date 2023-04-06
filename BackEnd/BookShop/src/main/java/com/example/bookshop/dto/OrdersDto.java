@@ -1,10 +1,11 @@
 package com.example.bookshop.dto;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 
-import com.example.bookshop.entities.Book;
+import com.example.bookshop.entities.Address;
 import com.example.bookshop.entities.OrderStatus;
 import com.example.bookshop.entities.Orders;
 import com.example.bookshop.entities.Users;
@@ -20,7 +21,9 @@ public class OrdersDto {
 
 	private int orderId;
 
-	private List<Book> orderedBooks;
+	private Map<String, Integer> books;
+	
+	private Address address;
 
 	private OrderStatus status;
 	

@@ -1,7 +1,10 @@
 package com.example.bookshop.entities;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,7 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -26,8 +30,14 @@ public class Orders {
 	@GeneratedValue
 	private int orderId;
 	
-	@OneToMany
-	private List<Book> orderedBooks;
+	@ElementCollection
+	@MapKeyColumn(name = "book_name")
+    @Column(name = "quantity")
+	private Map<String, Integer> books = new HashMap<>();
+	
+	@NotNull
+	@OneToOne
+	private Address address;
 
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;

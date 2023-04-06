@@ -1,11 +1,14 @@
 package com.example.bookshop.entities;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -22,8 +25,10 @@ public class Cart {
 	@GeneratedValue
 	private int cartId;
 
-	@OneToMany
-	private List<Book> books;
+	@ElementCollection
+	@MapKeyColumn(name = "book_name")
+    @Column(name = "quantity")
+	private Map<String, Integer> books = new HashMap<>();
 
 	private double amount;
 

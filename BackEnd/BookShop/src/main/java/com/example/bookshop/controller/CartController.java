@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bookshop.dto.CartDto;
+import com.example.bookshop.entities.Cart;
+import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.service.CartService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/cart")
 @PreAuthorize("hasRole('USER')")
 public class CartController {
@@ -36,6 +39,9 @@ public class CartController {
 	
 	@GetMapping("/getCart/{userName}")
 	public ResponseEntity<CartDto> getCart(@PathVariable String userName){
-		return new ResponseEntity<>(CartDto.toDto(service.getCartByUserName(userName)), HttpStatus.OK);
+		Cart cart = service.getCartByUserName(userName);
+		if(cart == null)
+			throw new RecordNotFoundException(ErrorMessage.EMPTY_CART);
+		return new ResponseEntity<>(CartDto.toDto(cart), HttpStatus.OK);
 	}
 }

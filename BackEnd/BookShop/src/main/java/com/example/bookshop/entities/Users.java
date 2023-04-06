@@ -53,6 +53,10 @@ public class Users {
 	@JsonIgnore
 	private List<Orders> orders;
 	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Address> address;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="USER_ROLE",
 		joinColumns = {

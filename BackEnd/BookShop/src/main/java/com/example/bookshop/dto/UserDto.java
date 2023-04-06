@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 
+import com.example.bookshop.entities.Address;
 import com.example.bookshop.entities.Orders;
 import com.example.bookshop.entities.Role;
 import com.example.bookshop.entities.UserStatus;
@@ -32,6 +33,8 @@ public class UserDto {
 	private UserStatus status;
 
 	private List<Orders> orders;
+	
+	private List<Address> address;
 	
 	private Set<Role> role; 
 

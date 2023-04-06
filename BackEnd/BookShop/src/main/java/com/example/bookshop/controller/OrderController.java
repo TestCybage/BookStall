@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import com.example.bookshop.service.OrderService;
 @RestController
 @RequestMapping("/order")
 @PreAuthorize("hasRole('USER')")
+@CrossOrigin("*")
 public class OrderController {
 
 	@Autowired
@@ -32,9 +34,9 @@ public class OrderController {
 		return new ResponseEntity<>(OrdersDto.toDto(service.getOrderByUserName(userName)), HttpStatus.OK);
 	}
 	
-	@PostMapping("/addOrder/{userName}")
-	public ResponseEntity<OrdersDto> addOrder(@PathVariable String userName){
-		return new ResponseEntity<>(OrdersDto.toDto(service.addOrder(userName)), HttpStatus.OK);
+	@PostMapping("/addOrder/{userName}/{addressId}")
+	public ResponseEntity<OrdersDto> addOrder(@PathVariable String userName,@PathVariable int addressId){
+		return new ResponseEntity<>(OrdersDto.toDto(service.addOrder(userName,addressId)), HttpStatus.OK);
 	}
 	
 	@PatchMapping("/cancelOrder/{id}")

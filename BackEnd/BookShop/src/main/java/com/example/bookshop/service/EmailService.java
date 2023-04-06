@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.bookshop.exception.ErrorMessage;
 
-import lombok.AllArgsConstructor;
-
 @Service
 public class EmailService {
 	
@@ -40,7 +38,7 @@ public class EmailService {
 			helper.setText(emailMessage,true);
 			helper.setTo(to);
 			helper.setSubject(subject);
-			helper.setFrom("Trng2@evolvinsols.com");
+			helper.setFrom("aashayk@evolvingsols.com");
 			logger.info(emailMessage);
 			logger.info(subject);
 			logger.info(to);

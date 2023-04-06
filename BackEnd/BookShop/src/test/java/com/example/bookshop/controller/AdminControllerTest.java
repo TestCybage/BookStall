@@ -45,7 +45,7 @@ class AdminControllerTest {
 		Set<Role> roles = new HashSet<>();
 		roles.add(role);
 		Users user = new Users("user1@example.com", "user1", "user1@example.com", "pass1234", "9988556622",
-				UserStatus.ENABLED, null, roles);
+				UserStatus.ENABLED, null,null, roles);
 		when(userService.unblockUser("user1@example.com")).thenReturn(user);
 		ResponseEntity<UserDto> response = adminController.unblockUser("user1@example.com");
 		assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -61,9 +61,9 @@ class AdminControllerTest {
 		Set<Role> roles = new HashSet<>();
 		roles.add(role);
 		disabledUsers.add(new Users("user1@example.com", "user1", "user1@example.com", "pass1234", "9988556622",
-				UserStatus.DISABLED, null, roles));
+				UserStatus.DISABLED, null,null, roles));
 		disabledUsers.add(new Users("user2@example.com", "user2", "user2@example.com", "pass1234", "9988556611",
-				UserStatus.DISABLED, null, roles));
+				UserStatus.DISABLED, null,null, roles));
 		when(userService.getDisabledUsers()).thenReturn(disabledUsers);
 		ResponseEntity<List<UserDto>> response = adminController.getDisabledUsers();
 		assertEquals(HttpStatus.OK, response.getStatusCode());

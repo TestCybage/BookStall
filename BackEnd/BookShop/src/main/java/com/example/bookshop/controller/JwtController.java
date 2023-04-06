@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.bookshop.dto.Credentials;
 import com.example.bookshop.dto.UserDto;
 import com.example.bookshop.entities.JwtRequest;
 import com.example.bookshop.entities.JwtResponse;
@@ -24,7 +26,7 @@ import com.example.bookshop.service.OTPService;
 import com.example.bookshop.service.UserService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class JwtController {
 
 	@Autowired
@@ -50,7 +52,7 @@ public class JwtController {
 		return new ResponseEntity<>(UserDto.toDto(service.signUp(UserDto.toEntity(dto))), HttpStatus.CREATED);
 	}
 
-	@PatchMapping("/disable/{userName}")
+	@PutMapping("/disable/{userName}")
 	public ResponseEntity<UserDto> disableUser(String userName) {
 		return new ResponseEntity<>(UserDto.toDto(service.disableUser(userName)), HttpStatus.OK);
 	}
@@ -76,5 +78,10 @@ public class JwtController {
 				return new ResponseEntity<>(Messages.INVALID_OTP, HttpStatus.OK);
 		} else
 			return new ResponseEntity<>(Messages.INVALID_OTP, HttpStatus.OK);
+	}
+	
+	@PutMapping("/forgotPassword")
+	public ResponseEntity<UserDto> forgotPassword(@RequestBody Credentials cred){
+		return new ResponseEntity<>(UserDto.toDto(service.forgetPassword(cred)), HttpStatus.OK);
 	}
 }

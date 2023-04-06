@@ -1,10 +1,9 @@
 package com.example.bookshop.dto;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 
-import com.example.bookshop.entities.Book;
 import com.example.bookshop.entities.Cart;
 import com.example.bookshop.entities.Users;
 
@@ -19,8 +18,8 @@ public class CartDto {
 
 	private int cartId;
 
-	private List<Book> books;
-
+	private Map<String, Integer> books;
+	
 	private double amount;
 
 	private Users user;
