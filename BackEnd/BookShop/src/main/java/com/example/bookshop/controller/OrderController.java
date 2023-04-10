@@ -36,7 +36,7 @@ public class OrderController {
 	
 	@PostMapping("/addOrder/{userName}/{addressId}")
 	public ResponseEntity<OrdersDto> addOrder(@PathVariable String userName,@PathVariable int addressId){
-		return new ResponseEntity<>(OrdersDto.toDto(service.addOrder(userName,addressId)), HttpStatus.OK);
+		return new ResponseEntity<>(OrdersDto.toDto(service.addOrder(userName,addressId)), HttpStatus.CREATED);
 	}
 	
 	@PatchMapping("/cancelOrder/{id}")

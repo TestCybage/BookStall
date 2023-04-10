@@ -45,5 +45,5 @@ public class ErrorMessage {
 	
 	public static final String INVALID_ADDRESS_ID="Address Id does not belong to user";
 	
-	public static final String OLD_PASSWORD="Old password not allowed";
+	public static final String OLD_CREDENTIALS="Old password not allowed";
 }

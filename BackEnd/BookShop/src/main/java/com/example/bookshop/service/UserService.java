@@ -124,7 +124,7 @@ public class UserService {
 		if(user==null)
 			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);
 		if(user.getPassword().equals(cred.getNewPassword()))
-			throw new InvalidInputException(ErrorMessage.OLD_PASSWORD);
+			throw new InvalidInputException(ErrorMessage.OLD_CREDENTIALS);
 		user.setPassword(getEncodedPassword(cred.getNewPassword()));
 		return dao.save(user);
 	}

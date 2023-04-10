@@ -33,8 +33,9 @@ public class CartController {
 	}
 	
 	@PutMapping("/emptyCart/{userName}")
-	public ResponseEntity<CartDto> emptyCart(@PathVariable String userName){
-		return new ResponseEntity<>(CartDto.toDto(service.emptyCart(userName)), HttpStatus.OK);
+	public ResponseEntity<String> emptyCart(@PathVariable String userName){
+		service.emptyCart(userName);
+		return new ResponseEntity<>("Cart is Emptied", HttpStatus.OK);
 	}
 	
 	@GetMapping("/getCart/{userName}")
