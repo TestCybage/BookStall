@@ -1,6 +1,8 @@
 package com.example.bookshop.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -46,11 +48,19 @@ class AddressControllerTest {
 	
 	private List<Address> addresses = new ArrayList<>();
 	
+	private AddressDto addressDto1 = new AddressDto(100,"Kalyani Nagar", "Pune", 411014, user);
+	
+	private AddressDto addressDto2 = new AddressDto(101,"Deccan", "Pune", 411014, user);
+	
+	private List<AddressDto> listDto = new ArrayList<>();
+	
 	public AddressControllerTest() {
 		roles.add(role);
 		addresses.add(address1);
 		addresses.add(address2);
 		user.setAddress(addresses);
+		listDto.add(addressDto1);
+		listDto.add(addressDto2);
 	}
 
 	@Test
@@ -59,9 +69,8 @@ class AddressControllerTest {
 		when(service.getByUserName("user1@example.com")).thenReturn(addresses);
 		ResponseEntity<List<AddressDto>> response = controller.getByUserName("user1@example.com");
 		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertEquals(2, response.getBody().size());
-		assertEquals(100, response.getBody().get(0).getId());
-		assertEquals(101, response.getBody().get(1).getId());
+		assertEquals(AddressDto.toDto(addresses), response.getBody());
+		
 	}
 
 	@Test

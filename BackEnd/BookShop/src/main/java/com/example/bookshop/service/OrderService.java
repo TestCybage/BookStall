@@ -82,8 +82,6 @@ public class OrderService {
 		for(String book:bookNames) {
 			books.add(bookService.getBookByName(book));
 		}
-		logger.info(cart);
-		logger.info(order);
 		dao.save(order);
 		for(Book book:books) {
 			bookService.editQuantity(book.getBookId(), book.getInStock()-cart.getBooks().get(book.getBookName()));

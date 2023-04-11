@@ -67,20 +67,16 @@ public class JwtController {
 	public ResponseEntity<String> validateOtp(@PathVariable int otp, @PathVariable String email) {
 		if (otp >= 0) {
 			int serverOTP = otpService.getOTP(email);
-			if (serverOTP > 0) {
-				if (otp == serverOTP) {
+			if (serverOTP > 0 && otp == serverOTP) {
 					otpService.clearOTP(email);
 					return new ResponseEntity<>(Messages.VALID_OTP, HttpStatus.OK);
-				} else
-					return new ResponseEntity<>(Messages.INVALID_OTP, HttpStatus.OK);
-			} else
-				return new ResponseEntity<>(Messages.INVALID_OTP, HttpStatus.OK);
-		} else
-			return new ResponseEntity<>(Messages.INVALID_OTP, HttpStatus.OK);
+			}
+		}
+		return new ResponseEntity<>(Messages.INVALID_OTP, HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/forgotPassword")
-	public ResponseEntity<UserDto> forgotPassword(@RequestBody Credentials cred){
+	public ResponseEntity<UserDto> forgotPassword(@RequestBody Credentials cred) {
 		return new ResponseEntity<>(UserDto.toDto(service.forgetPassword(cred)), HttpStatus.OK);
 	}
 }
