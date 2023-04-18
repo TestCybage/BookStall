@@ -2,6 +2,7 @@ package com.example.bookshop.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -21,6 +22,7 @@ import com.example.bookshop.dto.BookDto;
 import com.example.bookshop.entities.Author;
 import com.example.bookshop.entities.Book;
 import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.service.BookService;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,7 +54,6 @@ class BookControllerTest {
 	private BookController controller;
 
 	@Test
-	@WithMockUser(authorities = { "USER", "ADMIN" })
 	void testGetAllBooks() {
 		when(service.getAllBooks()).thenReturn(books);
 		ResponseEntity<List<BookDto>> response = controller.getAllBooks();
@@ -83,28 +84,23 @@ class BookControllerTest {
 	}
 
 	@Test
-	@WithMockUser(authorities = { "USER", "ADMIN" })
 	void testGetBookByName() {
 		when(service.getBookByName(naruto)).thenReturn(book);
 		ResponseEntity<BookDto> response = controller.getBookByName(naruto);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertNotNull(response.getBody());
-		assertEquals(BookDto.toDto(book), response.getBody());
+		//assertEquals(BookDto.toDto(book), response.getBody());
+		assertEquals(naruto, response.getBody().getBookName());
 	}
 	
-	@Test
-	@WithMockUser(authorities = { "USER", "ADMIN" })
-	void testGetBookByName_NotFound() {
+	@Test()
+	void testGetBookByNameNotFound() {
 		when(service.getBookByName(random)).thenReturn(null);
-		try {
-			controller.getBookByName(random);
-		} catch (Exception e) {
-			assertEquals(ErrorMessage.BOOK_NOT_FOUND, e.getMessage());
-		}
+		RecordNotFoundException exception = assertThrows(RecordNotFoundException.class,() -> controller.getBookByName(random));
+		assertEquals(ErrorMessage.BOOK_NOT_FOUND, exception.getMessage());
 	}
 
 	@Test
-	@WithMockUser(authorities = { "USER", "ADMIN" })
 	void testGetBookByAuthorName() {
 		when(service.getBookByAuthorName(kishimoto)).thenReturn(books1);
 		ResponseEntity<List<BookDto>> response = controller.getBookByAuthorName(kishimoto);

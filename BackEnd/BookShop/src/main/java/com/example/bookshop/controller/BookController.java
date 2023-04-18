@@ -2,7 +2,6 @@ package com.example.bookshop.controller;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +30,7 @@ public class BookController {
 
 	@Autowired
 	private BookService service;
-	
-	Logger logger = Logger.getLogger(BookController.class);
 
-	@PreAuthorize("hasAnyRole('ADMIN','USER')")
 	@GetMapping("/getAllBooks")
 	public ResponseEntity<List<BookDto>> getAllBooks() {
 		return new ResponseEntity<>(BookDto.toDto(service.getAllBooks()), HttpStatus.OK);
@@ -49,7 +45,6 @@ public class BookController {
 		return new ResponseEntity<>(BookDto.toDto(book), HttpStatus.OK);
 	}
 	
-	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/getBookByName/{name}")
 	public ResponseEntity<BookDto> getBookByName(@PathVariable String name) {
 		Book book = service.getBookByName(name);
@@ -58,7 +53,6 @@ public class BookController {
 		return new ResponseEntity<>(BookDto.toDto(book), HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/getBookByAuthorName/{name}")
 	public ResponseEntity<List<BookDto>> getBookByAuthorName(@PathVariable String name) {
 		return new ResponseEntity<>(BookDto.toDto(service.getBookByAuthorName(name)), HttpStatus.OK);

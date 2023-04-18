@@ -1682,3 +1682,173 @@ INFO - JWT Token Does Not Start With Bearer
 INFO - JWT Token Does Not Start With Bearer 
 INFO - JWT Token Does Not Start With Bearer 
 INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:0<br/>User Name:Aashay Kadu<br/> Order Amount: 6400.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'></tr>  <th>Book Name</th>  <th>Author Name </th>  <th>Book Price</th>  <th>Quantity</th>  <th>Total</th></tr>
+</tr>
+		<td>INDIA BHARAT AND PAKISTAN</td>
+		<td>J SAI DEEPAK</td>
+		<td>500.0</td>
+		<td>8</td>
+		<td>4000.0</td>
+</tr></tr>
+</tr>
+		<td>INDIA THAT IS BHARAT</td>
+		<td>J SAI DEEPAK</td>
+		<td>400.0</td>
+		<td>6</td>
+		<td>2400.0</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 0, 2023-04-11
+INFO - aashayk@cybage.com
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - {INDIA BHARAT AND PAKISTAN=8, INDIA THAT IS BHARAT=6}
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - INDIA BHARAT AND PAKISTAN
+INFO - INDIA THAT IS BHARAT
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:0<br/>User Name:Aashay Kadu<br/> Order Amount: 6400.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'></tr>  <th>Book Name</th>  <th>Author Name </th>  <th>Book Price</th>  <th>Quantity</th>  <th>Total</th></tr>
+</tr>
+		<td>INDIA BHARAT AND PAKISTAN</td>
+		<td>J SAI DEEPAK</td>
+		<td>500.0</td>
+		<td>8</td>
+		<td>4000.0</td>
+</tr></tr>
+</tr>
+		<td>INDIA THAT IS BHARAT</td>
+		<td>J SAI DEEPAK</td>
+		<td>400.0</td>
+		<td>6</td>
+		<td>2400.0</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 0, 2023-04-11
+INFO - aashayk@cybage.com
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - Book(bookId=0, bookName=INDIA THAT IS BHARAT, author=Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0), description=India Political History, inStock=200, copiesSold=0, price=400.0, rating=0)
+INFO - 0
+INFO - INDIA THAT IS BHARAT
+INFO - J Sai Deepak
+INFO - Author(authorId=0, authorName=J Sai Deepak, books=null, rating=0)
+INFO - 0
+INFO - J Sai Deepak
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 2 2 aashay
+INFO - 2
+INFO - INDIA THAT IS BHARAT
+INFO - 1600.0
+INFO - 1600.0
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay20
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay4
+INFO - {INDIA THAT IS BHARAT=4}
+INFO - INDIA THAT IS BHARAT
+INFO - 2 196
+INFO - 2
+INFO - 2
+INFO - 2
+INFO - INDIA THAT IS BHARAT
+INFO - <p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:5<br/>User Name:Aashay Kadu<br/> Order Amount: 1600.0<br/><h3>Order Details :<h3/></b><p/><table border='1' style='background-color: lemonchiffon;' ><tr>
+    <th>Order Number</th>
+    <th>Customer Name</th>
+</tr>
+<tr>
+    <td>5</td>
+    <td>Aashay Kadu</td>
+</table><hr/> <h3>Books Details :<h3/> <table border='1' style='background-color: lemonchiffon;'></tr>  <th>Book Name</th>  <th>Author Name </th>  <th>Book Price</th>  <th>Quantity</th>  <th>Total</th></tr>
+</tr>
+		<td>INDIA THAT IS BHARAT</td>
+		<td>J SAI DEEPAK</td>
+		<td>400.0</td>
+		<td>4</td>
+		<td>1600.0</td>
+</tr></table>
+INFO - Order Confirmation: Order Number: 5, 2023-04-11
+INFO - aashayk@cybage.com
+INFO - JWT Token Does Not Start With Bearer 
+ERROR - JWT Token is expired
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - 5
+INFO - 5
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - JWT Token Does Not Start With Bearer 
+INFO - aashay4
