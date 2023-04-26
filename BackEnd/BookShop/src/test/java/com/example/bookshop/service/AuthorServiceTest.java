@@ -97,7 +97,6 @@ class AuthorServiceTest {
 		Author author = new Author();
 		author.setAuthorId(id);
 		author.setAuthorName(name);
-		
 		when(dao.findByAuthorName(name.toUpperCase())).thenReturn(author);
 		assertThat(service.getByAuthorName(name)).isEqualTo(author);
 	}
@@ -114,9 +113,8 @@ class AuthorServiceTest {
 		books.add(book2);
 		Optional<Author> author1 = Optional.ofNullable(author);
 		when(dao.findById(id)).thenReturn(author1);
-		for(Book book:books) {
-		when(bookService.deleteBook(book.getBookId())).thenReturn(true);
-		}
+		when(bookService.deleteBook(book1.getBookId())).thenReturn(true);
+		when(bookService.deleteBook(book2.getBookId())).thenReturn(true);
 		assertTrue(service.deleteAuthor(id));	
 		verify(dao,times(1)).delete(author);
 	}

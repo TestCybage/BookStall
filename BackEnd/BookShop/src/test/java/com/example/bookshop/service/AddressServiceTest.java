@@ -121,6 +121,16 @@ class AddressServiceTest {
 	}
 	
 	@Test
+	void testDeleteAddressFailed() {
+		Optional<Address> address = Optional.ofNullable(address1);
+		when(dao.findById(100)).thenReturn(address);
+		when(dao.existsById(100)).thenReturn(true);
+		Boolean result = service.deleteAddress(userName, 100);
+		verify(dao,times(0)).deleteById(100);
+		assertFalse(result);
+	}
+	
+	@Test
 	void testDeleteAddressNotFound() {
 		Optional<Address> nullAddress = Optional.empty();
 		when(dao.findById(123)).thenReturn(nullAddress);

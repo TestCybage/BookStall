@@ -81,7 +81,7 @@ public class BookService {
 		return dao.save(book);
 	}
 	
-	public void changeCopiesSold(int id,int copies) {
+	public Book changeCopiesSold(int id,int copies) {
 		logger.info(id);
 		if(copies<0)
 			throw new InvalidInputException(ErrorMessage.INVALID_INPUT_QUANTITY);
@@ -89,7 +89,7 @@ public class BookService {
 		if(book==null)
 			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
 		book.setCopiesSold(book.getCopiesSold()+copies);
-		dao.save(book);
+		return dao.save(book);
 	}
 
 	public boolean deleteBook(int id) {

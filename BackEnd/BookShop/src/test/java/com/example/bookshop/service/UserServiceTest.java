@@ -192,13 +192,15 @@ class UserServiceTest {
 		List<Users> users = new ArrayList<>();
 		users.add(user);
 		when(dao.findAll()).thenReturn(users);
-		assertNotNull(users);
-		assertEquals(1, users.size());
+		List<Users> result = service.getAllUsers();
+		assertNotNull(result);
+		assertEquals(users, result);
 	}
 	
 	@Test
 	void testGetAllUsersEmptyList() {
 		List<Users> users = new ArrayList<>();
+		users.clear();
 		when(dao.findAll()).thenReturn(users);
 		assertThrows(EmptyRecordException.class, ()->service.getAllUsers());
 	}

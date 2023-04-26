@@ -2,6 +2,7 @@ package com.example.bookshop.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
@@ -148,7 +149,7 @@ class BookServiceTest {
 		book1.get().setInStock(quantity);
 		assertEquals(quantity, book1.get().getInStock());
 		when(dao.save(book)).thenReturn(book);
-		assertThat(service.getBookById(id)).isEqualTo(book1.get());
+		assertThat(service.editQuantity(id, quantity)).isEqualTo(book1.get());
 	}
 
 	@Test
@@ -157,6 +158,7 @@ class BookServiceTest {
 		int id = 1357;
 		Optional<Book> book1 = Optional.empty();
 		when(dao.findById(id)).thenReturn(book1);
+		book1=null;
 		assertThrows(RecordNotFoundException.class, () -> service.editQuantity(id, quantity));
 	}
 
@@ -176,7 +178,8 @@ class BookServiceTest {
 		book.setCopiesSold(copiesSold);
 		assertEquals(copiesSold, book1.get().getCopiesSold());
 		when(dao.save(book1.get())).thenReturn(book);
-		assertEquals(book, book1.get());
+		Book result = service.changeCopiesSold(id, copies);
+		assertEquals(result, book1.get());
 	}
 
 	@Test
@@ -191,6 +194,7 @@ class BookServiceTest {
 		int id = 257;
 		Optional<Book> book1 = Optional.empty();
 		when(dao.findById(id)).thenReturn(book1);
+		book1=null;
 		assertThrows(RecordNotFoundException.class, () -> service.changeCopiesSold(id, copies));
 	}
 
@@ -199,7 +203,8 @@ class BookServiceTest {
 		Optional<Book> book1 = Optional.ofNullable(book);
 		when(dao.findById(id)).thenReturn(book1);
 		when(dao.existsById(id)).thenReturn(false);
-		assertTrue(service.deleteBook(id));
+		Boolean result = service.deleteBook(id);
+		assertTrue(result);
 		verify(dao,times(1)).deleteById(id);
 	}
 	
@@ -222,7 +227,7 @@ class BookServiceTest {
 	@Test
 	void testGetBookByAuthorNameAuthorNotFound() {
 		when(authorService.getByAuthorName(authorName)).thenReturn(null);
-		assertThrows(RecordNotFoundException.class, () -> service.deleteBook(id));
+		assertThrows(RecordNotFoundException.class, () -> service.getBookByAuthorName(authorName));
 	}
 
 }

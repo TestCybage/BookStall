@@ -2821,3 +2821,244 @@ INFO - aashay
 INFO - aashay
 INFO - aashay
 INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - Aashay
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 1357 1000
+INFO - 1357
+INFO - 100 500.0
+INFO - 100
+INFO - 100 600.0
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 257
+INFO - 257
+INFO - 100 -1000
+INFO - 123
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - Aashay
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 1357 1000
+INFO - 1357
+INFO - 100 500.0
+INFO - 100
+INFO - 100 600.0
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 257
+INFO - 257
+INFO - 100 -1000
+INFO - 123
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - Aashay
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 1357 1000
+INFO - 1357
+INFO - 100 500.0
+INFO - 100
+INFO - 100 600.0
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 257
+INFO - 257
+INFO - 100 -1000
+INFO - 123
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - Aashay
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 1357 1000
+INFO - 1357
+INFO - 100 500.0
+INFO - 100
+INFO - 100 600.0
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 257
+INFO - 257
+INFO - 100 -1000
+INFO - 123
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - Aashay
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 1357 1000
+INFO - 1357
+INFO - 100 500.0
+INFO - 100
+INFO - 100 600.0
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 257
+INFO - 257
+INFO - 100 -1000
+INFO - 123
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - Aashay
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Author(authorId=100, authorName=Aashay, books=null, rating=0)
+INFO - Aashay
+INFO - 100
+INFO - 100
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 1357 1000
+INFO - 1357
+INFO - 100 500.0
+INFO - 100
+INFO - 100 600.0
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - 257
+INFO - 257
+INFO - 100 -1000
+INFO - 123
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - TestBook
+INFO - Book(bookId=100, bookName=TESTBOOK, author=Author(authorId=100, authorName=TESTAUTHOR, books=null, rating=0), description=null, inStock=0, copiesSold=0, price=500.0, rating=0)
+INFO - TESTBOOK
+INFO - 100
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - aashay
+INFO - Role(roleName=USER, roleDescription=Default role for the user)
+INFO - Aashay
+INFO - Aashay
+INFO - abc
+INFO - 100
+INFO - 100
+INFO - 1357 1000
+INFO - 1357
+INFO - 1357 1000
+INFO - 1357
+INFO - 100 1000
+INFO - 100
+INFO - 257
+INFO - 257
+INFO - 100
+INFO - 100
+INFO - 100
+INFO - TestBook
+INFO - 100
+INFO - TestBook
