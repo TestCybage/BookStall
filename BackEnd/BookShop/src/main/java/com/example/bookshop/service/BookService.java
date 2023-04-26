@@ -49,8 +49,6 @@ public class BookService {
 	public Book addBook(Book newBook) {
 		newBook.setBookName(newBook.getBookName().toUpperCase());
 		logger.info(newBook);
-		if (getBookById(newBook.getBookId()) != null)
-			throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);
 		if (getBookByName(newBook.getBookName().toUpperCase()) != null)
 			throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);
 		Author author = authorService.getByAuthorName(newBook.getAuthor().getAuthorName());
@@ -96,15 +94,12 @@ public class BookService {
 
 	public boolean deleteBook(int id) {
 		Book book = getBookById(id);
-		if (book == null)
+		if (book == null) {
 			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
-		else {
-			logger.info(book.getBookName());
-			dao.delete(book);
-			if(getBookByAuthorName(book.getAuthor().getAuthorName()).isEmpty())
-				authorService.deleteAuthor(book.getAuthor().getAuthorId());
-			return !dao.existsById(id);
 		}
+			logger.info(book.getBookName());
+			dao.deleteById(id);
+			return !dao.existsById(id);
 	}
 
 	public List<Book> getBookByAuthorName(String name) {

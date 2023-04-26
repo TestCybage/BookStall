@@ -13,7 +13,6 @@ import com.example.bookshop.exception.EmptyRecordException;
 import com.example.bookshop.exception.ErrorMessage;
 import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.repository.AuthorRepo;
-import com.example.bookshop.repository.BookRepo;
 
 @Service
 public class AuthorService {
@@ -22,7 +21,7 @@ public class AuthorService {
 	private AuthorRepo dao;
 	
 	@Autowired
-	private BookRepo bookDao;
+	private BookService bookService;
 	
 	Logger logger = Logger.getLogger(AuthorService.class);
 
@@ -33,8 +32,6 @@ public class AuthorService {
 
 	public Author addAuthor(Author author) {
 		logger.info(author);
-		if (getAuthorById(author.getAuthorId()) != null)
-			throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);
 		if (getByAuthorName(author.getAuthorName()) == null) {
 			author.setAuthorName(author.getAuthorName().toUpperCase()); 
 			return dao.save(author);
@@ -43,23 +40,27 @@ public class AuthorService {
 	}
 
 	public List<Author> getAllAuthor() {
-		if (dao.findAll().isEmpty())
+		List<Author> authorList = dao.findAll();
+		if (authorList.isEmpty())
 			throw new EmptyRecordException(ErrorMessage.RECORDS_EMPTY);
-		return dao.findAll();
+		return authorList;
 	}
 	
 	public Author getByAuthorName(String name) {
 		logger.info(name);
-		return dao.findByAuthorName(name.toUpperCase());
+		Author author = dao.findByAuthorName(name.toUpperCase());
+		if(author==null)
+			return null;
+		return author;
 	}
 	
 	public boolean deleteAuthor(int id){
 		Author author = getAuthorById(id);
 		if(author == null)
 			throw new RecordNotFoundException(ErrorMessage.AUTHOR_NOT_FOUND);
-		List<Book> books = bookDao.findByAuthor(author);
+		List<Book> books = bookService.getBookByAuthorName(author.getAuthorName());
 		for (Book book : books) {
-			bookDao.delete(book);
+			bookService.deleteBook(book.getBookId());
 		}
 		dao.delete(author);
 		return !dao.existsById(id);

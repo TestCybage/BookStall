@@ -38,14 +38,15 @@ public class CartService {
 
 	public Cart addToCart(int bookId, int quantity, String userName) {
 		log.info(bookId + " " + quantity + " " + userName);
-		if (getCartByUserName(userName) == null) {
+		Cart cart = getCartByUserName(userName);
+		if (cart == null) {
 			Cart cart1 = new Cart();
 			cart1.setUser(userService.getById(userName));
 			cart1.setBooks(new HashMap<>());
 			cart1.setAmount(0);
 			dao.save(cart1);
+			cart=cart1;
 		}
-		Cart cart = getCartByUserName(userName);
 		Map<String, Integer> books = cart.getBooks();
 		Set<String> bookNames = books.keySet();
 		Book book = bookService.getBookById(bookId);
@@ -69,6 +70,8 @@ public class CartService {
 
 	public Cart emptyCart(String userName) {
 		Cart cart = getCartByUserName(userName);
+		if(cart==null)
+			throw new RecordNotFoundException(ErrorMessage.EMPTY_CART);
 		dao.delete(cart);
 		return null;
 	}

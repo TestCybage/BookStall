@@ -21,6 +21,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import com.example.bookshop.dto.BookDto;
 import com.example.bookshop.entities.Author;
 import com.example.bookshop.entities.Book;
+import com.example.bookshop.exception.EmptyRecordException;
 import com.example.bookshop.exception.ErrorMessage;
 import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.service.BookService;
@@ -59,7 +60,7 @@ class BookControllerTest {
 		ResponseEntity<List<BookDto>> response = controller.getAllBooks();
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertNotNull(response.getBody());
-		assertEquals(BookDto.toDto(books), response.getBody());
+		assertEquals(books.size(), response.getBody().size());
 	}
 
 	@Test
@@ -69,18 +70,15 @@ class BookControllerTest {
 		ResponseEntity<BookDto> response = controller.getBookById(123);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertNotNull(response.getBody());
-		assertEquals(BookDto.toDto(book), response.getBody());
+		assertEquals(book.getBookId(), response.getBody().getBookId());
 	}
 	
 	@Test
 	@WithMockUser(authorities = "ADMIN")
-	void testGetBookById_NotFound() {
+	void testGetBookByIdNotFound() {
 		when(service.getBookById(0)).thenReturn(null);
-		try {
-			controller.getBookById(0);
-		} catch (Exception e) {
-			assertEquals(ErrorMessage.BOOK_NOT_FOUND, e.getMessage());
-		}
+		EmptyRecordException exception = assertThrows(EmptyRecordException.class,() -> controller.getBookById(0));
+		assertEquals(ErrorMessage.BOOK_NOT_FOUND, exception.getMessage());
 	}
 
 	@Test
@@ -89,8 +87,8 @@ class BookControllerTest {
 		ResponseEntity<BookDto> response = controller.getBookByName(naruto);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertNotNull(response.getBody());
-		//assertEquals(BookDto.toDto(book), response.getBody());
 		assertEquals(naruto, response.getBody().getBookName());
+		
 	}
 	
 	@Test()

@@ -3,6 +3,7 @@ package com.example.bookshop.controller;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -100,7 +101,7 @@ class JwtControllerTest {
 	}
 
 	@Test
-	void testSendOTP() throws MessagingException {
+	void testSendOTP() throws MessagingException, NoSuchAlgorithmException {
 		int otp=123456;
 		String otpMessage = ""+otp+"";
 		when(otpService.generateOTP(userDto.getEmail())).thenReturn(otp);
@@ -143,8 +144,8 @@ class JwtControllerTest {
 	
 	@Test
 	void testValidateOtp_InvalidOtp3() {
-		int otp =123456;
-		when(otpService.getOTP(user.getEmail())).thenReturn(-1);
+		int otp =-1;
+		//when(otpService.getOTP(user.getEmail())).thenReturn(-1);
 		ResponseEntity<String> response = controller.validateOtp(otp, user.getEmail());
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertNotNull(response.getBody());

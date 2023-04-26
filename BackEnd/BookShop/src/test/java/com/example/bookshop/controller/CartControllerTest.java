@@ -2,6 +2,7 @@ package com.example.bookshop.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.util.HashMap;
@@ -9,7 +10,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -101,7 +101,7 @@ class CartControllerTest {
 	@WithMockUser(authorities = "USER")
 	void testGetCart_EmptyCart() {
 		when(service.getCartByUserName(user.getUserName())).thenReturn(null);
-		Assertions.assertThrows(RecordNotFoundException.class, () -> controller.getCart(user.getUserName()));
+		assertThrows(RecordNotFoundException.class, ()->controller.getCart("user1@example.com"));
 	}
 
 }

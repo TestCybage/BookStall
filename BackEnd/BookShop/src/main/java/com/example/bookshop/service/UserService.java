@@ -116,16 +116,20 @@ public class UserService {
 	}
 
 	public List<Users> getAllUsers() {
-		return dao.findAll();
+		List<Users> users = dao.findAll();
+		if(users.isEmpty())
+			throw new EmptyRecordException(ErrorMessage.RECORDS_EMPTY);
+		return users;
 	}
 	
 	public Users forgetPassword(Credentials cred) {
 		Users user = getUserByEmail(cred.getUserEmail());
 		if(user==null)
 			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);
-		if(user.getPassword().equals(cred.getNewPassword()))
+		String newPassword = getEncodedPassword(cred.getNewPassword());
+		if(user.getPassword().equals(newPassword))
 			throw new InvalidInputException(ErrorMessage.OLD_CREDENTIALS);
-		user.setPassword(getEncodedPassword(cred.getNewPassword()));
+		user.setPassword(newPassword);
 		return dao.save(user);
 	}
 

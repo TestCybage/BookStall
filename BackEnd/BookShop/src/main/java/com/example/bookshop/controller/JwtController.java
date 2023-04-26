@@ -1,5 +1,7 @@
 package com.example.bookshop.controller;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.mail.MessagingException;
 import javax.security.auth.login.LoginException;
 
@@ -57,7 +59,7 @@ public class JwtController {
 	}
 
 	@PostMapping("/sendOTP")
-	public ResponseEntity<String> sendOTP(@RequestBody UserDto dto) throws MessagingException {
+	public ResponseEntity<String> sendOTP(@RequestBody UserDto dto) throws MessagingException, NoSuchAlgorithmException {
 		String email = dto.getEmail();
 		int otp = otpService.generateOTP(email);
 		return new ResponseEntity<>(emailService.sentOtpMessage(email, otp), HttpStatus.OK);
@@ -65,7 +67,7 @@ public class JwtController {
 
 	@GetMapping("/validate/{otp}/{email}")
 	public ResponseEntity<String> validateOtp(@PathVariable int otp, @PathVariable String email) {
-		if (otp >= 0) {
+		if (otp > 0) {
 			int serverOTP = otpService.getOTP(email);
 			if (serverOTP > 0 && otp == serverOTP) {
 					otpService.clearOTP(email);

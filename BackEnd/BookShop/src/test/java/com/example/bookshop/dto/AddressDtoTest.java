@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -28,7 +29,10 @@ class AddressDtoTest {
 	
 	private Users user = new Users();
 	
-	public AddressDtoTest() {
+	private Users user1;
+	
+	@BeforeEach
+	void setup() {
 		roles.add(role);
 		user.setUserName("Tester");
 		user.setName("test");
@@ -38,9 +42,31 @@ class AddressDtoTest {
 		user.setStatus(UserStatus.ENABLED);
 		user.setRole(roles);
 		
+		user1 = new Users("test", "test", "test@ku.com", "13154", "2211554433", UserStatus.ENABLED, null, null, roles);
+		
 		address = new Address(100, "Pimpri", "Pune", 414824,user);
 		
 		addressDto = new AddressDto(100, "Pimpri", "Pune", 414824, user);
+	}
+	
+	@Test
+	void testAddressDto() {
+		AddressDto dto=new AddressDto(100, "Pimpri", "Pune", 414824, user);
+		assertEquals(100, dto.getId());
+		assertEquals("Pimpri",dto.getAddressLine());
+		assertEquals("Pune",dto.getCity());
+		assertEquals(414824,dto.getPin());
+		assertEquals(user, dto.getUser());
+		dto.setId(101);
+		dto.setAddressLine("Rajapeth");
+		dto.setCity("Amravati");
+		dto.setPin(444606);
+		dto.setUser(user1);
+		assertEquals(101, dto.getId());
+		assertEquals("Rajapeth",dto.getAddressLine());
+		assertEquals("Amravati",dto.getCity());
+		assertEquals(444606,dto.getPin());
+		assertEquals(user1, dto.getUser());
 	}
 	
 	@Test

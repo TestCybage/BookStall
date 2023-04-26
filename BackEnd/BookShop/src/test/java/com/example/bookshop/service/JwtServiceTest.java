@@ -1,5 +1,6 @@
 package com.example.bookshop.service;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -15,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -103,6 +105,23 @@ class JwtServiceTest {
 	    }
 	    
 	    @Test
+	     void testLoadUserByUsernameWithDisabledUser() {
+	    	Users user = new Users();
+	        user.setUserName(testUser);
+	        user.setPassword(testPass);
+	        user.setStatus(UserStatus.DISABLED);
+
+	        Role role = new Role();
+	        role.setRoleName("USER");
+
+	        Set<Role> roles = new HashSet<>();
+	        roles.add(role);
+	        user.setRole(roles);
+	        when(dao.findById(Mockito.anyString())).thenReturn(java.util.Optional.of(user));
+	        assertThrows(DisabledException.class, ()->jwtService.loadUserByUsername(testUser));
+	    }
+	    
+	    @Test
 	     void testLoadUserByUsernameWithInvalidUsername() {
 	        when(dao.findById(Mockito.anyString())).thenReturn(java.util.Optional.empty());
 
@@ -119,5 +138,7 @@ class JwtServiceTest {
 
 	        return authorities;
 	    }
+	    
+	    
 
 }

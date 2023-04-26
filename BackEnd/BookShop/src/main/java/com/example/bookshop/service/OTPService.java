@@ -1,5 +1,7 @@
 package com.example.bookshop.service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -25,8 +27,8 @@ public class OTPService {
 				});
 	}
 
-	public int generateOTP(String key) {
-		Random random = new Random();
+	public int generateOTP(String key) throws NoSuchAlgorithmException {
+		Random random = SecureRandom.getInstanceStrong();
 		int otp = 100000 + random.nextInt(900000);
 		otpCache.asMap().put(key, otp);
 		return otp;
