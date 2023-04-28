@@ -15,6 +15,7 @@ import com.google.common.cache.CacheLoader;
 public class OTPService {
 
 	private static final Integer EXPIRE_MINS = 5;
+	
 	private Cache<String, Integer> otpCache;
 
 	public OTPService() {
@@ -26,6 +27,10 @@ public class OTPService {
 					}
 				});
 	}
+	
+	public Cache<String, Integer> getOtpCache() {
+        return otpCache;
+    }
 
 	public int generateOTP(String key) throws NoSuchAlgorithmException {
 		Random random = SecureRandom.getInstanceStrong();

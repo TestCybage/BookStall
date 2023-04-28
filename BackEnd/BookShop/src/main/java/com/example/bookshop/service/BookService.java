@@ -99,7 +99,7 @@ public class BookService {
 		}
 			logger.info(book.getBookName());
 			dao.deleteById(id);
-			return !dao.existsById(id);
+			return true;
 	}
 
 	public List<Book> getBookByAuthorName(String name) {

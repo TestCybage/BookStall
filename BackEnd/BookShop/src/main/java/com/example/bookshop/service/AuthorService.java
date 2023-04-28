@@ -19,10 +19,10 @@ public class AuthorService {
 
 	@Autowired
 	private AuthorRepo dao;
-	
+
 	@Autowired
 	private BookService bookService;
-	
+
 	Logger logger = Logger.getLogger(AuthorService.class);
 
 	public Author getAuthorById(int id) {
@@ -33,10 +33,10 @@ public class AuthorService {
 	public Author addAuthor(Author author) {
 		logger.info(author);
 		if (getByAuthorName(author.getAuthorName()) == null) {
-			author.setAuthorName(author.getAuthorName().toUpperCase()); 
+			author.setAuthorName(author.getAuthorName().toUpperCase());
 			return dao.save(author);
-		} 
-			throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);
+		}
+		throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);
 	}
 
 	public List<Author> getAllAuthor() {
@@ -45,27 +45,25 @@ public class AuthorService {
 			throw new EmptyRecordException(ErrorMessage.RECORDS_EMPTY);
 		return authorList;
 	}
-	
+
 	public Author getByAuthorName(String name) {
 		logger.info(name);
 		Author author = dao.findByAuthorName(name.toUpperCase());
-		if(author==null)
+		if (author == null)
 			return null;
 		return author;
 	}
-	
-	public boolean deleteAuthor(int id){
+
+	public boolean deleteAuthor(int id) {
 		Author author = getAuthorById(id);
-		if(author == null)
+		if (author == null)
 			throw new RecordNotFoundException(ErrorMessage.AUTHOR_NOT_FOUND);
 		List<Book> books = bookService.getBookByAuthorName(author.getAuthorName());
-		for (Book book : books) {
-			bookService.deleteBook(book.getBookId());
-		}
+			for (Book book : books) {
+				bookService.deleteBook(book.getBookId());
+			}
 		dao.delete(author);
-		return !dao.existsById(id);
+		return true;
 	}
-	
-	
 
 }

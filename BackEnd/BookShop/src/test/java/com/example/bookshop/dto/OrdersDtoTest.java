@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.example.bookshop.entities.Address;
@@ -34,6 +35,10 @@ class OrdersDtoTest {
 	
 	private OrdersDto ordersDto;
 	
+	private OrdersDto dto1;
+	
+	private OrdersDto dto2;
+	
 	public OrdersDtoTest() {
 		roles.add(role);
 		user.setUserName("Tester");
@@ -48,7 +53,45 @@ class OrdersDtoTest {
 		
 		orders = new Orders(100, bookMap, address, OrderStatus.COMPLETED, 1000, user);
 		ordersDto = new OrdersDto(100, bookMap,address, OrderStatus.COMPLETED, 1000, user);
+		
+		dto1 = new OrdersDto();
+		
+		dto2 = new OrdersDto();
 	}
+	
+	@Test
+    @DisplayName("Test hashCode method")
+    void testHashCode() {
+        assertEquals(dto1.hashCode(), dto2.hashCode());
+    }
+	
+	@Test
+    @DisplayName("Test hashCode method")
+    void testHashCodeNotEquals() {
+        assertNotEquals(dto1.hashCode(), ordersDto.hashCode());
+    }
+	
+	@Test
+    @DisplayName("Test equals method with equal objects")
+    void testEqualsWithEqualObjects() {
+        assertTrue(dto1.equals(dto2));
+    }
+
+    @Test
+    @DisplayName("Test equals method with non-equal objects")
+    void testEqualsWithNonEqualObjects() {
+        assertFalse(dto1.equals(null));
+        assertFalse(dto1.equals(ordersDto));
+        assertFalse(dto1.equals(new Object()));
+    }
+    
+    @Test
+    @DisplayName("Test toString method")
+    void testToString() {
+        String expected = "OrdersDto";
+        String actual = dto1.toString().substring(0, 9);
+        assertEquals(expected, actual);
+    }
 
 	@Test
 	void testToDtoOrders() {

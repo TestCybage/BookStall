@@ -48,6 +48,8 @@ public class OrderService {
 
 	public List<Orders> getOrderByUserName(String userName) {
 		Users user = userService.getById(userName);
+		if(user==null)
+			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);
 		List<Orders> orders = dao.findByUser(user);
 		if(orders.isEmpty())
 			throw new EmptyRecordException(ErrorMessage.RECORDS_EMPTY); 
@@ -112,8 +114,7 @@ public class OrderService {
 		}
 
 		for(int i=0;i<books.size();i++) {
-			for(int j=0;j<quantity.size();j++) {
-				if(i==j) {
+			for(int j=i;j<quantity.size();j++) { 
 			invoiceTable.append(
 					"</tr>\r\n"
 					+"</tr>\r\n"
@@ -124,7 +125,7 @@ public class OrderService {
 					+"		<td>"+books.get(i).getPrice()*quantity.get(j)+"</td>\r\n"
 					+"</tr>"
 					);
-				}
+				
 		}
 		}
 		String invoice="<p style='background-color: lemonchiffon;'>Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.<br/><b> Order Id:"+ order.getOrderId()+"<br/>User Name:"+ order.getUser().getName()+"<br/> Order Amount: "+order.getAmount() +"<br/><h3>Order Details :<h3/>"+

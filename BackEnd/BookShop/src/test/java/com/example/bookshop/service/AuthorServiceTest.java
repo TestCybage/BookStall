@@ -3,6 +3,7 @@ package com.example.bookshop.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -106,16 +107,19 @@ class AuthorServiceTest {
 		Author author = new Author();
 		author.setAuthorId(id);
 		author.setAuthorName(name);
+		Optional<Author> author1 = Optional.ofNullable(author);
+		when(dao.findById(id)).thenReturn(author1);
 		Book book1 = new Book(100, "none", author, "none", 200, 0, 100, 2);
 		Book book2 = new Book(101, "none1", author, "none1", 200, 0, 100, 2);
 		List<Book> books = new ArrayList<>();
 		books.add(book1);
 		books.add(book2);
-		Optional<Author> author1 = Optional.ofNullable(author);
-		when(dao.findById(id)).thenReturn(author1);
-		when(bookService.deleteBook(book1.getBookId())).thenReturn(true);
-		when(bookService.deleteBook(book2.getBookId())).thenReturn(true);
+		when(bookService.getBookByAuthorName(name)).thenReturn(books);
+		for(Book book:books) {
+			when(bookService.deleteBook(book.getBookId())).thenReturn(true);
+		}
 		assertTrue(service.deleteAuthor(id));	
+		verify(bookService,times(books.size())).deleteBook(anyInt());
 		verify(dao,times(1)).delete(author);
 	}
 

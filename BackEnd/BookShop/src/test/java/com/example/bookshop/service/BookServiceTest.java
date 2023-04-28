@@ -2,7 +2,6 @@ package com.example.bookshop.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
@@ -202,7 +201,6 @@ class BookServiceTest {
 	void testDeleteBook() {
 		Optional<Book> book1 = Optional.ofNullable(book);
 		when(dao.findById(id)).thenReturn(book1);
-		when(dao.existsById(id)).thenReturn(false);
 		Boolean result = service.deleteBook(id);
 		assertTrue(result);
 		verify(dao,times(1)).deleteById(id);

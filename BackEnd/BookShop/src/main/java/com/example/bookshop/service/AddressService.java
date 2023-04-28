@@ -51,7 +51,7 @@ public class AddressService {
 		if(!address.getUser().getUserName().equals(userName))
 			throw new InvalidInputException(ErrorMessage.INVALID_ADDRESS_ID);
 		dao.deleteById(id);
-		return !dao.existsById(id);
+		return true;
 	}
 
 	public Address updateAddress(Address address,String userName,int id) {

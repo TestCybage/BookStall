@@ -72,7 +72,7 @@ public class JwtService implements UserDetailsService {
 		return authorities;
 	}
 
-	private void authenticate(String userName, String userPassword) throws LoginException {
+	void authenticate(String userName, String userPassword) throws LoginException {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, userPassword));
 		} catch (DisabledException e) {

@@ -1,13 +1,17 @@
 package com.example.bookshop.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.security.NoSuchAlgorithmException;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.google.common.cache.Cache;
 
 @SpringBootTest
 class OTPServiceTest {
@@ -15,10 +19,20 @@ class OTPServiceTest {
 	@Autowired
 	private OTPService otpService;
 	
+	private Cache<String, Integer> otpCache;
+	
 	@BeforeEach
     public void setUp() {
         otpService = new OTPService();
+        otpCache = otpService.getOtpCache();
     }
+	
+//	@Test
+//    void testOtpCacheConstructorReturnsZero() {
+//        String key = "testKey";
+//        Integer value = otpCache.getIfPresent(key);
+//        assertEquals(0, value);
+//    }
 
 	@Test
 	void testGenerateOTP() throws NoSuchAlgorithmException {

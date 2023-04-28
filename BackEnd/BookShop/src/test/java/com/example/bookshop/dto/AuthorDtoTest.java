@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,6 +17,10 @@ class AuthorDtoTest {
 	
 	private AuthorDto authorDto;
 	
+	private AuthorDto dto1;
+	
+	private AuthorDto dto2;
+	
 	public AuthorDtoTest() {
 		author = new Author();
         author.setAuthorId(1);
@@ -26,7 +31,44 @@ class AuthorDtoTest {
         authorDto.setAuthorId(1);
         authorDto.setAuthorName("Test Author");
         authorDto.setRating(4);
+        
+        dto1 = new AuthorDto();
+        dto2 = new AuthorDto();
 	}
+	
+	@Test
+    @DisplayName("Test hashCode method")
+    void testHashCode() {
+        assertEquals(dto1.hashCode(), dto2.hashCode());
+    }
+	
+	@Test
+    @DisplayName("Test hashCode method")
+    void testHashCodeNotEquals() {
+        assertNotEquals(dto1.hashCode(), authorDto.hashCode());
+    }
+	
+	@Test
+    @DisplayName("Test equals method with equal objects")
+    void testEqualsWithEqualObjects() {
+        assertTrue(dto1.equals(dto2));
+    }
+
+    @Test
+    @DisplayName("Test equals method with non-equal objects")
+    void testEqualsWithNonEqualObjects() {
+        assertFalse(dto1.equals(null));
+        assertFalse(dto1.equals(authorDto));
+        assertFalse(dto1.equals(new Object()));
+    }
+    
+    @Test
+    @DisplayName("Test toString method")
+    void testToString() {
+        String expected = "AuthorDto";
+        String actual = dto1.toString().substring(0, 9);
+        assertEquals(expected, actual);
+    }
 	
 
 	@Test
