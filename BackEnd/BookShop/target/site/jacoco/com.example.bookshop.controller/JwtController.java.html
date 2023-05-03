@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JwtController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.controller</a> &gt; <span class="el_source">JwtController.java</span></div><h1>JwtController.java</h1><pre class="source lang-java linenums">package com.example.bookshop.controller;
+
+import java.security.NoSuchAlgorithmException;
+
+import javax.mail.MessagingException;
+import javax.security.auth.login.LoginException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.bookshop.dto.Credentials;
+import com.example.bookshop.dto.UserDto;
+import com.example.bookshop.entities.JwtRequest;
+import com.example.bookshop.entities.JwtResponse;
+import com.example.bookshop.messages.Messages;
+import com.example.bookshop.service.EmailService;
+import com.example.bookshop.service.JwtService;
+import com.example.bookshop.service.OTPService;
+import com.example.bookshop.service.UserService;
+
+@RestController
+@CrossOrigin(&quot;*&quot;)
+<span class="fc" id="L31">public class JwtController {</span>
+
+	@Autowired
+	private JwtService jwtService;
+
+	@Autowired
+	private UserService service;
+
+	@Autowired
+	private OTPService otpService;
+
+	@Autowired
+	private EmailService emailService;
+
+	@PostMapping(&quot;/authenticate&quot;)
+	public JwtResponse createJwtToken(@RequestBody JwtRequest jwtRequest) throws LoginException {
+<span class="fc" id="L47">		return jwtService.createJwtToken(jwtRequest);</span>
+
+	}
+
+	@PostMapping(&quot;/signUp&quot;)
+	public ResponseEntity&lt;UserDto&gt; signUp(@RequestBody UserDto dto) {
+<span class="fc" id="L53">		return new ResponseEntity&lt;&gt;(UserDto.toDto(service.signUp(UserDto.toEntity(dto))), HttpStatus.CREATED);</span>
+	}
+
+	@PutMapping(&quot;/disable/{userName}&quot;)
+	public ResponseEntity&lt;UserDto&gt; disableUser(String userName) {
+<span class="fc" id="L58">		return new ResponseEntity&lt;&gt;(UserDto.toDto(service.disableUser(userName)), HttpStatus.OK);</span>
+	}
+
+	@PostMapping(&quot;/sendOTP&quot;)
+	public ResponseEntity&lt;String&gt; sendOTP(@RequestBody UserDto dto) throws MessagingException, NoSuchAlgorithmException {
+<span class="fc" id="L63">		String email = dto.getEmail();</span>
+<span class="fc" id="L64">		int otp = otpService.generateOTP(email);</span>
+<span class="fc" id="L65">		return new ResponseEntity&lt;&gt;(emailService.sentOtpMessage(email, otp), HttpStatus.OK);</span>
+	}
+
+	@GetMapping(&quot;/validate/{otp}/{email}&quot;)
+	public ResponseEntity&lt;String&gt; validateOtp(@PathVariable int otp, @PathVariable String email) {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		if (otp &gt; 0) {</span>
+<span class="fc" id="L71">			int serverOTP = otpService.getOTP(email);</span>
+<span class="fc bfc" id="L72" title="All 4 branches covered.">			if (serverOTP &gt; 0 &amp;&amp; otp == serverOTP) {</span>
+<span class="fc" id="L73">					otpService.clearOTP(email);</span>
+<span class="fc" id="L74">					return new ResponseEntity&lt;&gt;(Messages.VALID_OTP, HttpStatus.OK);</span>
+			}
+		}
+<span class="fc" id="L77">		return new ResponseEntity&lt;&gt;(Messages.INVALID_OTP, HttpStatus.OK);</span>
+	}
+
+	@PutMapping(&quot;/forgotPassword&quot;)
+	public ResponseEntity&lt;UserDto&gt; forgotPassword(@RequestBody Credentials cred) {
+<span class="fc" id="L82">		return new ResponseEntity&lt;&gt;(UserDto.toDto(service.forgetPassword(cred)), HttpStatus.OK);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

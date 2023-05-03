@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BookDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.dto</a> &gt; <span class="el_source">BookDto.java</span></div><h1>BookDto.java</h1><pre class="source lang-java linenums">package com.example.bookshop.dto;
+
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import com.example.bookshop.entities.Author;
+import com.example.bookshop.entities.Book;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+<span class="pc bpc" id="L14" title="13 of 40 branches missed.">@Data</span>
+<span class="fc" id="L15">@NoArgsConstructor</span>
+<span class="fc" id="L16">@AllArgsConstructor</span>
+public class BookDto {
+
+<span class="fc" id="L19">	private int bookId;</span>
+
+<span class="fc" id="L21">	private String bookName;</span>
+
+<span class="fc" id="L23">	private Author author;</span>
+
+<span class="fc" id="L25">	private String description;</span>
+
+<span class="fc" id="L27">	private int inStock;</span>
+
+<span class="fc" id="L29">	private int copiesSold;</span>
+
+<span class="fc" id="L31">	private double price;</span>
+
+<span class="fc" id="L33">	private int rating;</span>
+
+	public static BookDto toDto(Book entity) {
+<span class="fc" id="L36">		BookDto dto = new BookDto();</span>
+<span class="fc" id="L37">		BeanUtils.copyProperties(entity, dto);</span>
+<span class="fc" id="L38">		return dto;</span>
+	}
+	
+	public static List&lt;BookDto&gt; toDto(List&lt;Book&gt; listEntity){
+<span class="fc" id="L42">		return listEntity.stream().map(BookDto::toDto).toList();</span>
+	}
+
+	public static Book toEntity(BookDto dto) {
+<span class="fc" id="L46">		Book entity = new Book();</span>
+<span class="fc" id="L47">		BeanUtils.copyProperties(dto, entity);</span>
+<span class="fc" id="L48">		return entity;</span>
+	}
+	
+	public static List&lt;Book&gt; toEntity(List&lt;BookDto&gt; listDto){
+<span class="fc" id="L52">		return listDto.stream().map(BookDto::toEntity).toList();</span>
+	}
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

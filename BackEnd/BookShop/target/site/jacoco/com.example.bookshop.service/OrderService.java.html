@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.service</a> &gt; <span class="el_source">OrderService.java</span></div><h1>OrderService.java</h1><pre class="source lang-java linenums">package com.example.bookshop.service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.bookshop.entities.Address;
+import com.example.bookshop.entities.Book;
+import com.example.bookshop.entities.Cart;
+import com.example.bookshop.entities.OrderStatus;
+import com.example.bookshop.entities.Orders;
+import com.example.bookshop.entities.Users;
+import com.example.bookshop.exception.EmptyRecordException;
+import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.InvalidInputException;
+import com.example.bookshop.exception.RecordNotFoundException;
+import com.example.bookshop.repository.OrderRepo;
+
+@Service
+<span class="fc" id="L27">public class OrderService {</span>
+
+	@Autowired
+	private OrderRepo dao;
+
+	@Autowired
+	private CartService cartService;
+
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private EmailService emailService;
+	
+	@Autowired
+	private BookService bookService;
+	
+	@Autowired
+	private AddressService addressService;
+
+<span class="fc" id="L47">	Logger logger = Logger.getLogger(OrderService.class);</span>
+
+	public List&lt;Orders&gt; getOrderByUserName(String userName) {
+<span class="fc" id="L50">		Users user = userService.getById(userName);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">		if(user==null)</span>
+<span class="fc" id="L52">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc" id="L53">		List&lt;Orders&gt; orders = dao.findByUser(user);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if(orders.isEmpty())</span>
+<span class="fc" id="L55">			throw new EmptyRecordException(ErrorMessage.RECORDS_EMPTY); </span>
+<span class="fc" id="L56">		return orders;</span>
+	}
+
+	public Orders getById(int id) {
+<span class="fc" id="L60">		logger.info(id);</span>
+<span class="fc" id="L61">		return dao.findById(id).orElse(null);</span>
+	}
+
+	public Orders addOrder(String userName,int addressId) {
+<span class="fc" id="L65">		logger.info(userName+&quot;&quot;+addressId);</span>
+<span class="fc" id="L66">		Address address  = addressService.getById(addressId);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		if(address==null)</span>
+<span class="fc" id="L68">			throw new RecordNotFoundException(ErrorMessage.ADDRESS_NOT_FOUND);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		if(!address.getUser().getUserName().equals(userName))</span>
+<span class="fc" id="L70">			throw new InvalidInputException(ErrorMessage.INVALID_ADDRESS_ID);</span>
+<span class="fc" id="L71">		Cart cart = cartService.getCartByUserName(userName);</span>
+<span class="fc bfc" id="L72" title="All 4 branches covered.">		if(cart==null || cart.getBooks().isEmpty())</span>
+<span class="fc" id="L73">			throw new EmptyRecordException(ErrorMessage.EMPTY_CART);</span>
+<span class="fc" id="L74">		Map&lt;String,Integer&gt; bookMap = new HashMap&lt;&gt;(cart.getBooks());</span>
+<span class="fc" id="L75">		logger.info(bookMap);</span>
+<span class="fc" id="L76">		Orders order = new Orders();</span>
+<span class="fc" id="L77">		order.setBooks(bookMap);</span>
+<span class="fc" id="L78">		order.setAmount(cart.getAmount());</span>
+<span class="fc" id="L79">		order.setUser(cart.getUser());</span>
+<span class="fc" id="L80">		order.setStatus(OrderStatus.COMPLETED);</span>
+<span class="fc" id="L81">		order.setAddress(address);</span>
+<span class="fc" id="L82">		Set&lt;String&gt; bookNames = cart.getBooks().keySet();</span>
+<span class="fc" id="L83">		List&lt;Book&gt; books = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">		for(String book:bookNames) {</span>
+<span class="fc" id="L85">			books.add(bookService.getBookByName(book));</span>
+<span class="fc" id="L86">		}</span>
+<span class="fc" id="L87">		dao.save(order);</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">		for(Book book:books) {</span>
+<span class="fc" id="L89">			bookService.editQuantity(book.getBookId(), book.getInStock()-cart.getBooks().get(book.getBookName()));</span>
+<span class="fc" id="L90">			bookService.changeCopiesSold(book.getBookId(), cart.getBooks().get(book.getBookName()));</span>
+<span class="fc" id="L91">		}</span>
+<span class="fc" id="L92">		cartService.emptyCart(cart.getUser().getUserName());</span>
+<span class="fc" id="L93">		sendInvoice(order);</span>
+<span class="fc" id="L94">		return order;</span>
+	}
+
+	public Orders cancelOrder(int id) {
+<span class="fc" id="L98">		logger.info(id);</span>
+<span class="fc" id="L99">		Orders order = getById(id);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">		if (order == null)</span>
+<span class="fc" id="L101">			throw new RecordNotFoundException(ErrorMessage.ORDER_NOT_FOUND);</span>
+<span class="fc" id="L102">		order.setStatus(OrderStatus.CANCELLED);</span>
+<span class="fc" id="L103">		return order;</span>
+	}
+
+	public void sendInvoice(Orders order) {
+<span class="fc" id="L107">		StringBuilder invoiceTable = new StringBuilder();</span>
+<span class="fc" id="L108">		Set&lt;String&gt; bookNames = order.getBooks().keySet();</span>
+<span class="fc" id="L109">		List&lt;Book&gt; books = new ArrayList&lt;&gt;() ;</span>
+<span class="fc" id="L110">		List&lt;Integer&gt; quantity = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">		for(String book:bookNames) {</span>
+<span class="fc" id="L112">			books.add(bookService.getBookByName(book));</span>
+<span class="fc" id="L113">			quantity.add(order.getBooks().get(book));</span>
+<span class="fc" id="L114">		}</span>
+
+<span class="fc bfc" id="L116" title="All 2 branches covered.">		for(int i=0;i&lt;books.size();i++) {</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">			for(int j=i;j&lt;quantity.size();j++) { </span>
+<span class="fc" id="L118">			invoiceTable.append(</span>
+					&quot;&lt;/tr&gt;\r\n&quot;
+					+&quot;&lt;/tr&gt;\r\n&quot;
+<span class="fc" id="L121">					+&quot;		&lt;td&gt;&quot;+books.get(i).getBookName()+&quot;&lt;/td&gt;\r\n&quot;</span>
+<span class="fc" id="L122">					+&quot;		&lt;td&gt;&quot;+books.get(i).getAuthor().getAuthorName()+&quot;&lt;/td&gt;\r\n&quot;</span>
+<span class="fc" id="L123">					+&quot;		&lt;td&gt;&quot;+books.get(i).getPrice()+&quot;&lt;/td&gt;\r\n&quot;</span>
+<span class="fc" id="L124">					+&quot;		&lt;td&gt;&quot;+quantity.get(j)+&quot;&lt;/td&gt;\r\n&quot;</span>
+<span class="fc" id="L125">					+&quot;		&lt;td&gt;&quot;+books.get(i).getPrice()*quantity.get(j)+&quot;&lt;/td&gt;\r\n&quot;</span>
+					+&quot;&lt;/tr&gt;&quot;
+					);
+				
+		}
+		}
+<span class="fc" id="L131">		String invoice=&quot;&lt;p style='background-color: lemonchiffon;'&gt;Dear Customer, Thanks for Ordering,Your Order Details Are  indicated Below.&lt;br/&gt;&lt;b&gt; Order Id:&quot;+ order.getOrderId()+&quot;&lt;br/&gt;User Name:&quot;+ order.getUser().getName()+&quot;&lt;br/&gt; Order Amount: &quot;+order.getAmount() +&quot;&lt;br/&gt;&lt;h3&gt;Order Details :&lt;h3/&gt;&quot;+</span>
+				 &quot;&lt;/b&gt;&lt;p/&gt;&lt;table border='1' style='background-color: lemonchiffon;' &gt;&lt;tr&gt;\r\n&quot;
+				
+				+ &quot;    &lt;th&gt;Order Number&lt;/th&gt;\r\n&quot;
+				+ &quot;    &lt;th&gt;Customer Name&lt;/th&gt;\r\n&quot;
+				+ &quot;&lt;/tr&gt;\r\n&quot;
+				+ &quot;&lt;tr&gt;\r\n&quot;
+				
+<span class="fc" id="L139">				+ &quot;    &lt;td&gt;&quot;+order.getOrderId()+&quot;&lt;/td&gt;\r\n&quot;</span>
+<span class="fc" id="L140">				+ &quot;    &lt;td&gt;&quot;+order.getUser().getName()+&quot;&lt;/td&gt;\r\n&quot;</span>
+				+ &quot;&lt;/table&gt;&lt;hr/&gt; &lt;h3&gt;Books Details :&lt;h3/&gt; &lt;table border='1' style='background-color: lemonchiffon;'&gt;&lt;/tr&gt;&quot;
+				+ &quot;  &lt;th&gt;Book Name&lt;/th&gt;&quot;
+				+ &quot;  &lt;th&gt;Author Name &lt;/th&gt;&quot;
+				+ &quot;  &lt;th&gt;Book Price&lt;/th&gt;&quot;
+				+ &quot;  &lt;th&gt;Quantity&lt;/th&gt;&quot;
+				+ &quot;  &lt;th&gt;Total&lt;/th&gt;&quot;
+				+invoiceTable+&quot;&lt;/table&gt;&quot;;
+		
+<span class="fc" id="L149">			String subject=&quot;Order Confirmation: Order Number: &quot;+	order.getOrderId()  +&quot;, &quot;+ LocalDate.now();</span>
+		
+<span class="fc" id="L151">			emailService.sendEmail(subject, order.getUser().getEmail(), invoice);</span>
+<span class="fc" id="L152">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

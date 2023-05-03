@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.example.bookshop.service;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.example.bookshop.dto.Credentials;
+import com.example.bookshop.entities.Role;
+import com.example.bookshop.entities.UserStatus;
+import com.example.bookshop.entities.Users;
+import com.example.bookshop.exception.AlreadyEnabledException;
+import com.example.bookshop.exception.AlreadyExistException;
+import com.example.bookshop.exception.EmptyRecordException;
+import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.InvalidInputException;
+import com.example.bookshop.exception.RecordNotFoundException;
+import com.example.bookshop.exception.ShortPasswordException;
+import com.example.bookshop.repository.RoleRepo;
+import com.example.bookshop.repository.UserRepo;
+
+@Service
+<span class="fc" id="L27">public class UserService {</span>
+
+	@Autowired
+	private UserRepo dao;
+
+	@Autowired
+	private RoleRepo roleDao;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+<span class="fc" id="L38">	Logger logger = Logger.getLogger(UserService.class);</span>
+
+	public Users getUserByEmail(String email) {
+<span class="fc" id="L41">		return dao.findByEmail(email);</span>
+	}
+
+	public Users signUp(Users user) {
+<span class="fc" id="L45">		logger.info(user.getUserName());</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">		if (dao.findById(user.getUserName()).orElse(null) != null)</span>
+<span class="fc" id="L47">			throw new AlreadyExistException(ErrorMessage.USERNAME_EXISTS);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		if (dao.findByEmail(user.getEmail()) != null)</span>
+<span class="fc" id="L49">			throw new AlreadyExistException(ErrorMessage.EMAIL_EXISTS);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		if (user.getPassword().length() &lt; 8)</span>
+<span class="fc" id="L51">			throw new ShortPasswordException(ErrorMessage.SHORT_PASSWORD);</span>
+<span class="fc" id="L52">		Role role = roleDao.findById(&quot;USER&quot;).orElse(null);</span>
+<span class="fc" id="L53">		logger.info(role);</span>
+<span class="fc" id="L54">		Set&lt;Role&gt; roles = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L55">		roles.add(role);</span>
+<span class="fc" id="L56">		user.setRole(roles);</span>
+<span class="fc" id="L57">		user.setStatus(UserStatus.ENABLED);</span>
+<span class="fc" id="L58">		user.setPassword(getEncodedPassword(user.getPassword()));</span>
+<span class="fc" id="L59">		return dao.save(user);</span>
+	}
+
+	public void initRolesAndUsers() {
+<span class="fc" id="L63">		Role adminRole = new Role();</span>
+<span class="fc" id="L64">		adminRole.setRoleName(&quot;ADMIN&quot;);</span>
+<span class="fc" id="L65">		adminRole.setRoleDescription(&quot;ADMIN role&quot;);</span>
+<span class="fc" id="L66">		roleDao.save(adminRole);</span>
+
+<span class="fc" id="L68">		Role userRole = new Role();</span>
+<span class="fc" id="L69">		userRole.setRoleName(&quot;USER&quot;);</span>
+<span class="fc" id="L70">		userRole.setRoleDescription(&quot;Default role for the user&quot;);</span>
+<span class="fc" id="L71">		roleDao.save(userRole);</span>
+
+<span class="fc" id="L73">		Users adminUser = new Users();</span>
+<span class="fc" id="L74">		adminUser.setUserName(&quot;Admin&quot;);</span>
+<span class="fc" id="L75">		adminUser.setName(&quot;Admin&quot;);</span>
+<span class="fc" id="L76">		adminUser.setEmail(&quot;admin@gmail.com&quot;);</span>
+<span class="fc" id="L77">		adminUser.setMobileNo(&quot;1234567980&quot;);</span>
+<span class="fc" id="L78">		adminUser.setPassword(getEncodedPassword(&quot;admin@pass&quot;));</span>
+<span class="fc" id="L79">		Set&lt;Role&gt; adminRoles = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L80">		adminRoles.add(adminRole);</span>
+<span class="fc" id="L81">		adminUser.setRole(adminRoles);</span>
+<span class="fc" id="L82">		dao.save(adminUser);</span>
+<span class="fc" id="L83">	}</span>
+
+	public String getEncodedPassword(String password) {
+<span class="fc" id="L86">		return passwordEncoder.encode(password);</span>
+	}
+
+	public Users unblockUser(String email) {
+<span class="fc" id="L90">		Users user = getUserByEmail(email);</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		if (user == null)</span>
+<span class="fc" id="L92">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		if (user.getStatus() == UserStatus.ENABLED)</span>
+<span class="fc" id="L94">			throw new AlreadyEnabledException(ErrorMessage.USER_NOT_DISABLED);</span>
+<span class="fc" id="L95">		user.setStatus(UserStatus.ENABLED);</span>
+<span class="fc" id="L96">		return dao.save(user);</span>
+	}
+
+	public Users getById(String userName) {
+<span class="fc" id="L100">		return dao.findById(userName).orElse(null);</span>
+	}
+
+	public Users disableUser(String userName) {
+<span class="fc" id="L104">		Users user = getById(userName);</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">		if (user == null)</span>
+<span class="fc" id="L106">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc" id="L107">		user.setStatus(UserStatus.DISABLED);</span>
+<span class="fc" id="L108">		return dao.save(user);</span>
+	}
+
+	public List&lt;Users&gt; getDisabledUsers() {
+<span class="fc" id="L112">		List&lt;Users&gt; users = dao.findByStatus(UserStatus.DISABLED);</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">		if (users.isEmpty())</span>
+<span class="fc" id="L114">			throw new EmptyRecordException(ErrorMessage.USER_LIST_EMPTY);</span>
+<span class="fc" id="L115">		return users;</span>
+	}
+
+	public List&lt;Users&gt; getAllUsers() {
+<span class="fc" id="L119">		List&lt;Users&gt; users = dao.findAll();</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">		if(users.isEmpty())</span>
+<span class="fc" id="L121">			throw new EmptyRecordException(ErrorMessage.RECORDS_EMPTY);</span>
+<span class="fc" id="L122">		return users;</span>
+	}
+	
+	public Users forgetPassword(Credentials cred) {
+<span class="fc" id="L126">		Users user = getUserByEmail(cred.getUserEmail());</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">		if(user==null)</span>
+<span class="fc" id="L128">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc" id="L129">		String newPassword = getEncodedPassword(cred.getNewPassword());</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">		if(user.getPassword().equals(newPassword))</span>
+<span class="fc" id="L131">			throw new InvalidInputException(ErrorMessage.OLD_CREDENTIALS);</span>
+<span class="fc" id="L132">		user.setPassword(newPassword);</span>
+<span class="fc" id="L133">		return dao.save(user);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

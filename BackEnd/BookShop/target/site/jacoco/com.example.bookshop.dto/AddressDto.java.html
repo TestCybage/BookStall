@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddressDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.dto</a> &gt; <span class="el_source">AddressDto.java</span></div><h1>AddressDto.java</h1><pre class="source lang-java linenums">package com.example.bookshop.dto;
+
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import com.example.bookshop.entities.Address;
+import com.example.bookshop.entities.Users;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+<span class="pc bpc" id="L14" title="9 of 34 branches missed.">@Data</span>
+<span class="fc" id="L15">@NoArgsConstructor</span>
+<span class="fc" id="L16">@AllArgsConstructor</span>
+public class AddressDto {
+
+<span class="fc" id="L19">	private int id;</span>
+
+<span class="fc" id="L21">	private String addressLine;</span>
+
+<span class="fc" id="L23">	private String city;</span>
+
+<span class="fc" id="L25">	private int pin;</span>
+
+<span class="fc" id="L27">	private Users user;</span>
+
+	public static Address toEntity(AddressDto dto) {
+<span class="fc" id="L30">		Address entity = new Address();</span>
+<span class="fc" id="L31">		BeanUtils.copyProperties(dto, entity);</span>
+<span class="fc" id="L32">		return entity;</span>
+	}
+
+	public static AddressDto toDto(Address entity) {
+<span class="fc" id="L36">		AddressDto dto = new AddressDto();</span>
+<span class="fc" id="L37">		BeanUtils.copyProperties(entity, dto);</span>
+<span class="fc" id="L38">		return dto;</span>
+	}
+
+	public static List&lt;Address&gt; toEntity(List&lt;AddressDto&gt; listDto) {
+<span class="fc" id="L42">		return listDto.stream().map(AddressDto::toEntity).toList();</span>
+	}
+
+	public static List&lt;AddressDto&gt; toDto(List&lt;Address&gt; listEntity) {
+<span class="fc" id="L46">		return listEntity.stream().map(AddressDto::toDto).toList();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

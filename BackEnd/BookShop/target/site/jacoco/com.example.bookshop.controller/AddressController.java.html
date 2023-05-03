@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddressController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.controller</a> &gt; <span class="el_source">AddressController.java</span></div><h1>AddressController.java</h1><pre class="source lang-java linenums">package com.example.bookshop.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.bookshop.dto.AddressDto;
+import com.example.bookshop.service.AddressService;
+
+@RestController
+@RequestMapping(&quot;/address&quot;)
+@CrossOrigin(&quot;*&quot;)
+@PreAuthorize(&quot;hasRole('USER')&quot;)
+<span class="fc" id="L26">public class AddressController {</span>
+	
+	@Autowired
+	private AddressService service;
+
+	@GetMapping(&quot;/getByUserName/{userName}&quot;)
+	public ResponseEntity&lt;List&lt;AddressDto&gt;&gt; getByUserName(@PathVariable String userName){
+<span class="fc" id="L33">		return new ResponseEntity&lt;&gt;(AddressDto.toDto(service.getByUserName(userName)), HttpStatus.OK);</span>
+	}
+	
+	@PostMapping(&quot;/addAddress/{userName}&quot;)
+	public ResponseEntity&lt;AddressDto&gt; addAddress(@RequestBody AddressDto dto,@PathVariable String userName){
+<span class="fc" id="L38">		return new ResponseEntity&lt;&gt;(AddressDto.toDto(service.addAddress(AddressDto.toEntity(dto), userName)),HttpStatus.CREATED);</span>
+	}
+	
+	@DeleteMapping(&quot;/deleteAddress/{userName}/{id}&quot;)
+	public ResponseEntity&lt;Boolean&gt; deleteAddress(@PathVariable String userName, @PathVariable int id){
+<span class="fc" id="L43">		return new ResponseEntity&lt;&gt;(service.deleteAddress(userName,id), HttpStatus.OK);</span>
+	}
+	
+	@PutMapping(&quot;/updateAddress/{userName}/{id}&quot;)
+	public ResponseEntity&lt;AddressDto&gt; updateAddress(@RequestBody AddressDto dto,@PathVariable String userName,@PathVariable int id){
+<span class="fc" id="L48">		return new ResponseEntity&lt;&gt;(AddressDto.toDto(service.updateAddress(AddressDto.toEntity(dto),userName,id)),HttpStatus.ACCEPTED);</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

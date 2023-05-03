@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrdersDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.dto</a> &gt; <span class="el_source">OrdersDto.java</span></div><h1>OrdersDto.java</h1><pre class="source lang-java linenums">package com.example.bookshop.dto;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.BeanUtils;
+
+import com.example.bookshop.entities.Address;
+import com.example.bookshop.entities.OrderStatus;
+import com.example.bookshop.entities.Orders;
+import com.example.bookshop.entities.Users;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+<span class="pc bpc" id="L17" title="11 of 42 branches missed.">@Data</span>
+<span class="fc" id="L18">@NoArgsConstructor</span>
+<span class="fc" id="L19">@AllArgsConstructor</span>
+public class OrdersDto {
+
+<span class="fc" id="L22">	private int orderId;</span>
+
+<span class="fc" id="L24">	private Map&lt;String, Integer&gt; books;</span>
+	
+<span class="fc" id="L26">	private Address address;</span>
+
+<span class="fc" id="L28">	private OrderStatus status;</span>
+	
+<span class="fc" id="L30">	private double amount;</span>
+
+<span class="fc" id="L32">	private Users user;</span>
+
+	public static OrdersDto toDto(Orders entity) {
+<span class="fc" id="L35">		OrdersDto dto = new OrdersDto();</span>
+<span class="fc" id="L36">		BeanUtils.copyProperties(entity, dto);</span>
+<span class="fc" id="L37">		return dto;</span>
+	}
+
+	public static Orders toEntity(OrdersDto dto) {
+<span class="fc" id="L41">		Orders entity = new Orders();</span>
+<span class="fc" id="L42">		BeanUtils.copyProperties(dto, entity);</span>
+<span class="fc" id="L43">		return entity;</span>
+	}
+
+	public static List&lt;OrdersDto&gt; toDto(List&lt;Orders&gt; entityList) {
+<span class="fc" id="L47">		return entityList.stream().map(OrdersDto::toDto).toList();</span>
+	}
+
+	public static List&lt;Orders&gt; toEntity(List&lt;OrdersDto&gt; dtoList) {
+<span class="fc" id="L51">		return dtoList.stream().map(OrdersDto::toEntity).toList();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

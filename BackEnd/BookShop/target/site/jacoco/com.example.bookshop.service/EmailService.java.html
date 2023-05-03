@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmailService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.service</a> &gt; <span class="el_source">EmailService.java</span></div><h1>EmailService.java</h1><pre class="source lang-java linenums">package com.example.bookshop.service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import com.example.bookshop.exception.ErrorMessage;
+
+@Service
+<span class="fc" id="L15">public class EmailService {</span>
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
+	
+<span class="fc" id="L20">	Logger logger = Logger.getLogger(EmailService.class);</span>
+
+	public String sentOtpMessage(String to, int otp) throws MessagingException {
+<span class="fc" id="L23">		MimeMessage msg = javaMailSender.createMimeMessage();</span>
+<span class="fc" id="L24">		MimeMessageHelper helper = new MimeMessageHelper(msg, &quot;utf-8&quot;);</span>
+<span class="fc" id="L25">		helper.setFrom(&quot;Trng2@evolvinsols.com&quot;);</span>
+<span class="fc" id="L26">		helper.setTo(to);</span>
+<span class="fc" id="L27">		helper.setText(&quot;OTP is:&quot; + otp, true);</span>
+<span class="fc" id="L28">		helper.setSubject(&quot;Otp for login&quot;);</span>
+
+<span class="fc" id="L30">		javaMailSender.send(msg);</span>
+<span class="fc" id="L31">		return &quot;&quot; + otp + &quot;&quot;;</span>
+	}
+		
+	public void sendEmail(String subject,String to,String emailMessage) {
+		try {
+<span class="fc" id="L36">			MimeMessage msg = javaMailSender.createMimeMessage();</span>
+<span class="fc" id="L37">			MimeMessageHelper helper = new MimeMessageHelper(msg, &quot;utf-8&quot;);</span>
+<span class="fc" id="L38">			helper.setText(emailMessage,true);</span>
+<span class="fc" id="L39">			helper.setTo(to);</span>
+<span class="fc" id="L40">			helper.setSubject(subject);</span>
+<span class="fc" id="L41">			helper.setFrom(&quot;aashayk@evolvingsols.com&quot;);</span>
+<span class="fc" id="L42">			logger.info(emailMessage);</span>
+<span class="fc" id="L43">			logger.info(subject);</span>
+<span class="fc" id="L44">			logger.info(to);</span>
+<span class="fc" id="L45">			javaMailSender.send(msg);</span>
+<span class="fc" id="L46">		} catch (MessagingException e) {</span>
+<span class="fc" id="L47">			logger.error(ErrorMessage.EMAIL_FAILED,e);</span>
+<span class="fc" id="L48">			throw new IllegalStateException(ErrorMessage.EMAIL_FAILED);</span>
+<span class="fc" id="L49">		}</span>
+<span class="fc" id="L50">	}</span>
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

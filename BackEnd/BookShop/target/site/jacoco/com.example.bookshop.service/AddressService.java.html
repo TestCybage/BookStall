@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddressService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.service</a> &gt; <span class="el_source">AddressService.java</span></div><h1>AddressService.java</h1><pre class="source lang-java linenums">package com.example.bookshop.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.bookshop.entities.Address;
+import com.example.bookshop.entities.Users;
+import com.example.bookshop.exception.EmptyRecordException;
+import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.InvalidInputException;
+import com.example.bookshop.exception.RecordNotFoundException;
+import com.example.bookshop.repository.AddressRepo;
+
+@Service
+<span class="fc" id="L17">public class AddressService {</span>
+
+	@Autowired
+	private AddressRepo dao;
+
+	@Autowired
+	private UserService userService;
+
+	public Address getById(int id) {
+<span class="fc" id="L26">		return dao.findById(id).orElse(null);</span>
+	}
+
+	public List&lt;Address&gt; getByUserName(String userName) {
+<span class="fc" id="L30">		Users user = userService.getById(userName);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		if (user == null)</span>
+<span class="fc" id="L32">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc" id="L33">		List&lt;Address&gt; addresses = dao.findByUser(user);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">		if (addresses.isEmpty())</span>
+<span class="fc" id="L35">			throw new EmptyRecordException(ErrorMessage.RECORDS_EMPTY);</span>
+<span class="fc" id="L36">		return addresses;</span>
+	}
+
+	public Address addAddress(Address address, String userName) {
+<span class="fc" id="L40">		Users user = userService.getById(userName);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">		if (user == null)</span>
+<span class="fc" id="L42">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc" id="L43">		address.setUser(user);</span>
+<span class="fc" id="L44">		return dao.save(address);</span>
+	}
+
+	public Boolean deleteAddress(String userName,int id) {
+<span class="fc" id="L48">		Address address = getById(id);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">		if(address==null)</span>
+<span class="fc" id="L50">			throw new RecordNotFoundException(ErrorMessage.ADDRESS_NOT_FOUND);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">		if(!address.getUser().getUserName().equals(userName))</span>
+<span class="fc" id="L52">			throw new InvalidInputException(ErrorMessage.INVALID_ADDRESS_ID);</span>
+<span class="fc" id="L53">		dao.deleteById(id);</span>
+<span class="fc" id="L54">		return true;</span>
+	}
+
+	public Address updateAddress(Address address,String userName,int id) {
+<span class="fc" id="L58">		Users user=userService.getById(userName);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		if (user == null)</span>
+<span class="fc" id="L60">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc" id="L61">		address.setUser(user);</span>
+<span class="fc" id="L62">		address.setId(id);</span>
+<span class="fc" id="L63">		return dao.save(address);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

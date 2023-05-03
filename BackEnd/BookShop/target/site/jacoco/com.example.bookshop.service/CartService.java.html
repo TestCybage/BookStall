@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CartService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShop</a> &gt; <a href="index.source.html" class="el_package">com.example.bookshop.service</a> &gt; <span class="el_source">CartService.java</span></div><h1>CartService.java</h1><pre class="source lang-java linenums">package com.example.bookshop.service;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.bookshop.entities.Book;
+import com.example.bookshop.entities.Cart;
+import com.example.bookshop.entities.Users;
+import com.example.bookshop.exception.AlreadyExistException;
+import com.example.bookshop.exception.ErrorMessage;
+import com.example.bookshop.exception.RecordNotFoundException;
+import com.example.bookshop.repository.CartRepo;
+
+@Service
+<span class="fc" id="L20">public class CartService {</span>
+
+	@Autowired
+	private CartRepo dao;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private BookService bookService;
+
+<span class="fc" id="L31">	Logger log = Logger.getLogger(CartService.class);</span>
+
+	public Cart getCartByUserName(String userName) {
+<span class="fc" id="L34">		Users user = userService.getById(userName);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">		if (user == null)</span>
+<span class="fc" id="L36">			throw new RecordNotFoundException(ErrorMessage.USER_NOT_FOUND);</span>
+<span class="fc" id="L37">		return dao.findByUser(user);</span>
+	}
+
+	public Cart addToCart(int bookId, int quantity, String userName) {
+<span class="fc" id="L41">		log.info(bookId + &quot; &quot; + quantity + &quot; &quot; + userName);</span>
+<span class="fc" id="L42">		Cart cart = getCartByUserName(userName);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		if (cart == null) {</span>
+<span class="fc" id="L44">			cart = createCart(userName);</span>
+		}
+<span class="fc" id="L46">		Map&lt;String, Integer&gt; books = cart.getBooks();</span>
+<span class="fc" id="L47">		Set&lt;String&gt; bookNames = books.keySet();</span>
+<span class="fc" id="L48">		Book book = bookService.getBookById(bookId);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">		if (book == null)</span>
+<span class="fc" id="L50">			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">		if (books.containsKey(book.getBookName()))</span>
+<span class="fc" id="L52">			books.replace(book.getBookName(), books.get(book.getBookName()) + quantity);</span>
+		else
+<span class="fc" id="L54">			books.putIfAbsent(book.getBookName(), quantity);</span>
+<span class="fc" id="L55">		double amount = 0;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">		for (String name : bookNames) {</span>
+<span class="fc" id="L57">			amount = amount + bookService.getBookByName(name).getPrice() * books.get(name);</span>
+<span class="fc" id="L58">		}</span>
+
+<span class="fc" id="L60">		log.info(amount);</span>
+
+<span class="fc" id="L62">		cart.setBooks(books);</span>
+<span class="fc" id="L63">		cart.setAmount(amount);</span>
+<span class="fc" id="L64">		log.info(cart.getAmount());</span>
+<span class="fc" id="L65">		return dao.save(cart);</span>
+	}
+
+	public Cart emptyCart(String userName) {
+<span class="fc" id="L69">		Cart cart = getCartByUserName(userName);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		if(cart==null)</span>
+<span class="fc" id="L71">			throw new RecordNotFoundException(ErrorMessage.EMPTY_CART);</span>
+<span class="fc" id="L72">		cart.setBooks(new HashMap&lt;&gt;());</span>
+<span class="fc" id="L73">		cart.setAmount(0);</span>
+<span class="fc" id="L74">		return dao.save(cart);</span>
+	}
+	
+	public Cart createCart(String userName) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">		if(getCartByUserName(userName)!=null)</span>
+<span class="fc" id="L79">			throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);</span>
+<span class="fc" id="L80">		Users user = userService.getById(userName);</span>
+<span class="fc" id="L81">		Cart cart = new Cart();</span>
+<span class="fc" id="L82">		cart.setBooks(new HashMap&lt;&gt;());</span>
+<span class="fc" id="L83">		cart.setAmount(0);</span>
+<span class="fc" id="L84">		cart.setUser(user);</span>
+<span class="fc" id="L85">		return dao.save(cart);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
