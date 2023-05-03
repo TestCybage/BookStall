@@ -69,7 +69,7 @@ public class OrderService {
 		if(!address.getUser().getUserName().equals(userName))
 			throw new InvalidInputException(ErrorMessage.INVALID_ADDRESS_ID);
 		Cart cart = cartService.getCartByUserName(userName);
-		if(cart==null)
+		if(cart==null || cart.getBooks().isEmpty())
 			throw new EmptyRecordException(ErrorMessage.EMPTY_CART);
 		Map<String,Integer> bookMap = new HashMap<>(cart.getBooks());
 		logger.info(bookMap);
@@ -80,7 +80,7 @@ public class OrderService {
 		order.setStatus(OrderStatus.COMPLETED);
 		order.setAddress(address);
 		Set<String> bookNames = cart.getBooks().keySet();
-		List<Book> books = new ArrayList<>() ;
+		List<Book> books = new ArrayList<>();
 		for(String book:bookNames) {
 			books.add(bookService.getBookByName(book));
 		}
@@ -88,7 +88,7 @@ public class OrderService {
 		for(Book book:books) {
 			bookService.editQuantity(book.getBookId(), book.getInStock()-cart.getBooks().get(book.getBookName()));
 			bookService.changeCopiesSold(book.getBookId(), cart.getBooks().get(book.getBookName()));
-			}
+		}
 		cartService.emptyCart(cart.getUser().getUserName());
 		sendInvoice(order);
 		return order;

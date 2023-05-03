@@ -141,7 +141,7 @@ class OrderServiceTest {
 		when(cartService.getCartByUserName(userName)).thenReturn(cart);
 		Set<String> bookNames = cart.getBooks().keySet();
 		System.out.println(bookNames);
-		List<Book> books = new ArrayList<>() ;
+		List<Book> books = new ArrayList<>();
 		when(bookService.getBookByName("TestBook")).thenReturn(book);
 		for(String i:bookNames) {
 			books.add(bookService.getBookByName(i));
@@ -178,10 +178,19 @@ class OrderServiceTest {
 	}
 	
 	@Test
-	void testAddOrderEmptyCart() {
+	void testAddOrderEmptyCartCase1() {
 		when(addressService.getById(101)).thenReturn(address);
 		assertEquals(userName, address.getUser().getUserName());
 		when(cartService.getCartByUserName(userName)).thenReturn(null);
+		assertThrows(EmptyRecordException.class, ()->service.addOrder(userName, 101));
+	}
+	
+	@Test
+	void testAddOrderEmptyCartCase2() {
+		cart.setBooks(new HashMap<>());
+		when(addressService.getById(101)).thenReturn(address);
+		assertEquals(userName, address.getUser().getUserName());
+		when(cartService.getCartByUserName(userName)).thenReturn(cart);
 		assertThrows(EmptyRecordException.class, ()->service.addOrder(userName, 101));
 	}
 

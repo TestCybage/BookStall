@@ -1,10 +1,10 @@
 package com.example.bookshop.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.times;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -25,6 +25,7 @@ import com.example.bookshop.entities.Cart;
 import com.example.bookshop.entities.Role;
 import com.example.bookshop.entities.UserStatus;
 import com.example.bookshop.entities.Users;
+import com.example.bookshop.exception.AlreadyExistException;
 import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.repository.CartRepo;
 @SpringBootTest
@@ -85,17 +86,88 @@ class CartServiceTest {
 		assertThrows(RecordNotFoundException.class, ()->service.getCartByUserName(userId));
 	}
 
-//	@Test
-//	void testAddToCart() {
-//		fail("Not yet Implented");
-//	}
+	@Test
+	void testAddToCart() {
+		int bookId =200;
+		int quantity = 2;
+		when(userService.getById(userId)).thenReturn(user);
+		when(dao.findByUser(user)).thenReturn(cart);
+		
+		Map<String, Integer> books = cart.getBooks();
+		Set<String> bookNames = books.keySet();
+		
+		when(bookService.getBookById(bookId)).thenReturn(book);
+		
+		if (books.containsKey(book.getBookName()))
+			books.replace(book.getBookName(), books.get(book.getBookName()) + quantity);
+		else
+			books.putIfAbsent(book.getBookName(), quantity);
+		double amount = 0;
+		when(bookService.getBookByName(bookName)).thenReturn(book);
+		for (String name : bookNames) {
+			amount = amount + bookService.getBookByName(name).getPrice() * books.get(name);
+		}
+		cart.setBooks(books);
+		cart.setAmount(amount);
+		when(dao.save(cart)).thenReturn(cart);
+		Cart result = service.addToCart(bookId, quantity, userId);
+		assertNotNull(result);
+		assertEquals(cart, result);
+	}
+	
+	@Test
+	void testAddToCartCase2() {
+		Book book1 = new Book(201, "One Piece", author, "Luffy", 10, 10, 100, 5);
+		int quantity = 1;
+		when(userService.getById(userId)).thenReturn(user);
+		when(dao.findByUser(user)).thenReturn(cart);
+		
+		Map<String, Integer> books = cart.getBooks();
+		Set<String> bookNames = books.keySet();
+		
+		when(bookService.getBookById(201)).thenReturn(book1);
+		
+		if (books.containsKey(book.getBookName()))
+			books.replace(book.getBookName(), books.get(book.getBookName()) + quantity);
+		else
+			books.putIfAbsent(book.getBookName(), quantity);
+		double amount = 0;
+		when(bookService.getBookByName(bookName)).thenReturn(book);
+		when(bookService.getBookByName("One Piece")).thenReturn(book1);
+		for (String name : bookNames) {
+			amount = amount + bookService.getBookByName(name).getPrice() * books.get(name);
+		}
+		cart.setBooks(books);
+		cart.setAmount(amount);
+		when(dao.save(cart)).thenReturn(cart);
+		Cart result = service.addToCart(201, quantity, userId);
+		//verify(bookService,timeout(bookNames.size())).getBookByName(anyString());
+		assertNotNull(result);
+		assertEquals(cart, result);
+	}
+	
+	@Test
+	void testAddToCartWithExceptions() {
+		int bookId =0;
+		int quantity = 2;
+		when(userService.getById(userId)).thenReturn(user);
+		when(dao.findByUser(user)).thenReturn(null);
+		TestCreateCart();
+		when(bookService.getBookById(bookId)).thenReturn(null);
+		assertThrows(RecordNotFoundException.class, ()->service.addToCart(0, quantity, userId));
+	}
 
 	@Test
 	void testEmptyCart() {
 		when(userService.getById(userId)).thenReturn(user);
 		when(dao.findByUser(user)).thenReturn(cart);
-		assertNull(service.emptyCart(userId));
-		verify(dao,times(1)).delete(cart);
+		cart.setBooks(new HashMap<>());
+		cart.setAmount(0);
+		cart.setUser(user);
+		when(dao.save(cart)).thenReturn(cart);
+		Cart result = service.emptyCart(userId);
+		assertNotNull(result);
+		assertEquals(result, cart);
 	}
 	
 	@Test
@@ -103,6 +175,28 @@ class CartServiceTest {
 		when(userService.getById(userId)).thenReturn(user);
 		when(dao.findByUser(user)).thenReturn(null);
 		assertThrows(RecordNotFoundException.class, ()->service.emptyCart(userId));
+	}
+	
+	@Test
+	void TestCreateCart() {
+		when(userService.getById(userId)).thenReturn(user);
+		when(dao.findByUser(user)).thenReturn(null);
+		when(userService.getById(userId)).thenReturn(user);
+		Cart cart = new Cart();
+		cart.setBooks(new HashMap<>());
+		cart.setAmount(0);
+		cart.setUser(user);
+		when(dao.save(cart)).thenReturn(cart);
+		Cart result = service.createCart(userId);
+		assertNotNull(result);
+		assertEquals(cart, result);
+	}
+	
+	@Test
+	void TestCreateCartAlreadyExists() {
+		when(userService.getById(userId)).thenReturn(user);
+		when(dao.findByUser(user)).thenReturn(cart);
+		assertThrows(AlreadyExistException.class, ()->service.createCart(userId));
 	}
 
 }

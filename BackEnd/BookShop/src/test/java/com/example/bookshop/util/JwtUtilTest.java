@@ -2,12 +2,12 @@ package com.example.bookshop.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -34,7 +34,7 @@ class JwtUtilTest {
 
     @Test
     void testGenerateToken() {
-        Mockito.when(userDetails.getUsername()).thenReturn(username);
+        when(userDetails.getUsername()).thenReturn(username);
         String token = jwtUtil.generateToken(userDetails);
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
         assertEquals(claims.getSubject(), username);
@@ -57,7 +57,7 @@ class JwtUtilTest {
 
     @Test
     void testValidateToken() {
-        Mockito.when(userDetails.getUsername()).thenReturn(username);
+        when(userDetails.getUsername()).thenReturn(username);
         boolean actualResult = jwtUtil.validateToken(jwtToken, userDetails);
         assertTrue(actualResult);
     }

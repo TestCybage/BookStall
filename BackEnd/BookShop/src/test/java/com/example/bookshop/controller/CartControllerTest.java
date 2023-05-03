@@ -80,11 +80,14 @@ class CartControllerTest {
 	@Test
 	@WithMockUser(authorities = "USER")
 	void testEmptyCart() {
-		when(service.emptyCart(user.getUserName())).thenReturn(null);
-		ResponseEntity<String> response = controller.emptyCart(user.getUserName());
+		cart.setAmount(0);
+		cart.setBooks(new HashMap<>());
+		cartDto = CartDto.toDto(cart);
+		when(service.emptyCart(user.getUserName())).thenReturn(cart);
+		ResponseEntity<CartDto> response = controller.emptyCart(user.getUserName());
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertNotNull(response.getBody());
-		assertEquals("Cart is Emptied", response.getBody());
+		assertEquals(cartDto, response.getBody());
 	}
 
 	@Test

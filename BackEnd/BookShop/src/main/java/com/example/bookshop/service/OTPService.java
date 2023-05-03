@@ -27,10 +27,6 @@ public class OTPService {
 					}
 				});
 	}
-	
-	public Cache<String, Integer> getOtpCache() {
-        return otpCache;
-    }
 
 	public int generateOTP(String key) throws NoSuchAlgorithmException {
 		Random random = SecureRandom.getInstanceStrong();

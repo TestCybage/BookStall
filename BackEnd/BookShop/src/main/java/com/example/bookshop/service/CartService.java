@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.bookshop.entities.Book;
 import com.example.bookshop.entities.Cart;
 import com.example.bookshop.entities.Users;
+import com.example.bookshop.exception.AlreadyExistException;
 import com.example.bookshop.exception.ErrorMessage;
 import com.example.bookshop.exception.RecordNotFoundException;
 import com.example.bookshop.repository.CartRepo;
@@ -40,21 +41,17 @@ public class CartService {
 		log.info(bookId + " " + quantity + " " + userName);
 		Cart cart = getCartByUserName(userName);
 		if (cart == null) {
-			Cart cart1 = new Cart();
-			cart1.setUser(userService.getById(userName));
-			cart1.setBooks(new HashMap<>());
-			cart1.setAmount(0);
-			dao.save(cart1);
-			cart=cart1;
+			cart = createCart(userName);
 		}
 		Map<String, Integer> books = cart.getBooks();
 		Set<String> bookNames = books.keySet();
 		Book book = bookService.getBookById(bookId);
 		if (book == null)
 			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
-		books.putIfAbsent(book.getBookName(), quantity);
 		if (books.containsKey(book.getBookName()))
 			books.replace(book.getBookName(), books.get(book.getBookName()) + quantity);
+		else
+			books.putIfAbsent(book.getBookName(), quantity);
 		double amount = 0;
 		for (String name : bookNames) {
 			amount = amount + bookService.getBookByName(name).getPrice() * books.get(name);
@@ -72,7 +69,19 @@ public class CartService {
 		Cart cart = getCartByUserName(userName);
 		if(cart==null)
 			throw new RecordNotFoundException(ErrorMessage.EMPTY_CART);
-		dao.delete(cart);
-		return null;
+		cart.setBooks(new HashMap<>());
+		cart.setAmount(0);
+		return dao.save(cart);
+	}
+	
+	public Cart createCart(String userName) {
+		if(getCartByUserName(userName)!=null)
+			throw new AlreadyExistException(ErrorMessage.ALREADY_EXIST);
+		Users user = userService.getById(userName);
+		Cart cart = new Cart();
+		cart.setBooks(new HashMap<>());
+		cart.setAmount(0);
+		cart.setUser(user);
+		return dao.save(cart);
 	}
 }
