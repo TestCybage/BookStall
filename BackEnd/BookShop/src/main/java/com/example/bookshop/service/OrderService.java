@@ -45,6 +45,13 @@ public class OrderService {
 	private AddressService addressService;
 
 	Logger logger = Logger.getLogger(OrderService.class);
+	
+	public List<Orders> getAllOrders(){
+		List<Orders> orders = dao.findAllByOrderByOrderIdDesc();
+		if(orders==null)
+			throw new RecordNotFoundException(ErrorMessage.RECORDS_EMPTY);
+		return orders;
+	}
 
 	public List<Orders> getOrderByUserName(String userName) {
 		Users user = userService.getById(userName);

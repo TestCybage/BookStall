@@ -20,23 +20,23 @@ import lombok.NoArgsConstructor;
 <span class="fc" id="L20">@AllArgsConstructor</span>
 public class UserDto {
 
-<span class="fc" id="L23">	private String userName;</span>
+	private String userName;
 
-<span class="fc" id="L25">	private String name;</span>
+	private String name;
 
-<span class="fc" id="L27">	private String email;</span>
+	private String email;
 
-<span class="fc" id="L29">	private String password;</span>
+	private String password;
 
-<span class="fc" id="L31">	private String mobileNo;</span>
+	private String mobileNo;
 
-<span class="fc" id="L33">	private UserStatus status;</span>
+	private UserStatus status;
 
-<span class="fc" id="L35">	private List&lt;Orders&gt; orders;</span>
+	private List&lt;Orders&gt; orders;
 	
-<span class="fc" id="L37">	private List&lt;Address&gt; address;</span>
+	private List&lt;Address&gt; address;
 	
-<span class="fc" id="L39">	private Set&lt;Role&gt; role; </span>
+	private Set&lt;Role&gt; role; 
 
 
 	public static UserDto toDto(Users entity) {

@@ -20,7 +20,6 @@ import com.example.bookshop.service.OrderService;
 
 @RestController
 @RequestMapping("/order")
-@PreAuthorize("hasRole('USER')")
 @CrossOrigin("*")
 public class OrderController {
 
@@ -29,16 +28,25 @@ public class OrderController {
 	
 	Logger log  = Logger.getLogger(OrderController.class);
 	
+	@PreAuthorize("hasRole('ADMIN')")
+	@GetMapping("/getAllOrders")
+	public ResponseEntity<List<OrdersDto>> getAllOrders(){
+		return new ResponseEntity<>(OrdersDto.toDto(service.getAllOrders()), HttpStatus.OK);
+	}
+	
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/getByUserName/{userName}")
 	public ResponseEntity<List<OrdersDto>> getOrderByUserName(@PathVariable String userName){
 		return new ResponseEntity<>(OrdersDto.toDto(service.getOrderByUserName(userName)), HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/addOrder/{userName}/{addressId}")
 	public ResponseEntity<OrdersDto> addOrder(@PathVariable String userName,@PathVariable int addressId){
 		return new ResponseEntity<>(OrdersDto.toDto(service.addOrder(userName,addressId)), HttpStatus.CREATED);
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@PatchMapping("/cancelOrder/{id}")
 	public ResponseEntity<OrdersDto> cancelOrder(@PathVariable int id){
 		return new ResponseEntity<>(OrdersDto.toDto(service.cancelOrder(id)), HttpStatus.ACCEPTED);

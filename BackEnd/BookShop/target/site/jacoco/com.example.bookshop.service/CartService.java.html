@@ -55,7 +55,7 @@ import com.example.bookshop.repository.CartRepo;
 <span class="fc" id="L55">		double amount = 0;</span>
 <span class="fc bfc" id="L56" title="All 2 branches covered.">		for (String name : bookNames) {</span>
 <span class="fc" id="L57">			amount = amount + bookService.getBookByName(name).getPrice() * books.get(name);</span>
-<span class="fc" id="L58">		}</span>
+		}
 
 <span class="fc" id="L60">		log.info(amount);</span>
 

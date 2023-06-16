@@ -1,0 +1,17 @@
+#tableContainer{
+    background-color:bisque;
+}
+#table{
+    background-color: cornsilk;
+}
+h2{
+    color:cadetblue;
+}
+#tableFooter{
+    background-color: bisque;
+}
+.input-group{
+    padding-left: 20px;
+    padding-top: 20px;
+    width: 400px;
+}

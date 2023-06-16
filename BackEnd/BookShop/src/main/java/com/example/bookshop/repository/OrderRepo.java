@@ -12,4 +12,6 @@ import com.example.bookshop.entities.Users;
 public interface OrderRepo extends JpaRepository<Orders, Integer> {
 	
 	public List<Orders> findByUser(Users user);
+	
+	public List<Orders> findAllByOrderByOrderIdDesc();
 }

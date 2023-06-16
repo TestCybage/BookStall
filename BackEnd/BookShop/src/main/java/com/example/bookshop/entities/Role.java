@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Role {
 	@Id
 	private String roleName;
-	
+
 	private String roleDescription;
 
 }

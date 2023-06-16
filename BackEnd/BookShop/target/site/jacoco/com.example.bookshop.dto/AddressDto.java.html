@@ -16,15 +16,15 @@ import lombok.NoArgsConstructor;
 <span class="fc" id="L16">@AllArgsConstructor</span>
 public class AddressDto {
 
-<span class="fc" id="L19">	private int id;</span>
+	private int id;
 
-<span class="fc" id="L21">	private String addressLine;</span>
+	private String addressLine;
 
-<span class="fc" id="L23">	private String city;</span>
+	private String city;
 
-<span class="fc" id="L25">	private int pin;</span>
+	private int pin;
 
-<span class="fc" id="L27">	private Users user;</span>
+	private Users user;
 
 	public static Address toEntity(AddressDto dto) {
 <span class="fc" id="L30">		Address entity = new Address();</span>

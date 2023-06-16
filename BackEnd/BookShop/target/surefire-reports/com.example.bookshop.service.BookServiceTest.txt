@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.bookshop.service.BookServiceTest
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.832 s - in com.example.bookshop.service.BookServiceTest
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.846 s - in com.example.bookshop.service.BookServiceTest

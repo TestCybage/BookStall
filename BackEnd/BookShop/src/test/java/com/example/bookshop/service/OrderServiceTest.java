@@ -102,6 +102,19 @@ class OrderServiceTest {
 		cart = new Cart(100, bookMap, 400, user);
 		listOrder.add(order);
 	}
+	
+	@Test
+	void testGetAllOrders() {
+		when(dao.findAllByOrderByOrderIdDesc()).thenReturn(listOrder);
+		List<Orders> orders = service.getAllOrders();
+		assertEquals(listOrder.size(), orders.size());
+	}
+	
+	@Test
+	void testGetAllOrdersRecordEmpty() {
+		when(dao.findAllByOrderByOrderIdDesc()).thenReturn(null);
+		assertThrows(RecordNotFoundException.class,()->service.getAllOrders());
+	}
 
 	@Test
 	void testGetOrderByUserName() {

@@ -91,11 +91,20 @@ class BookControllerTest {
 		
 	}
 	
-	@Test()
+	@Test
 	void testGetBookByNameNotFound() {
 		when(service.getBookByName(random)).thenReturn(null);
 		RecordNotFoundException exception = assertThrows(RecordNotFoundException.class,() -> controller.getBookByName(random));
 		assertEquals(ErrorMessage.BOOK_NOT_FOUND, exception.getMessage());
+	}
+	
+	@Test
+	void testSearchBook() {
+		when(service.searchBook("Naru")).thenReturn(books1);
+		ResponseEntity<List<BookDto>> response = controller.searchBook("Naru");
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertNotNull(response.getBody());
+		assertEquals(BookDto.toDto(books1), response.getBody());
 	}
 
 	@Test

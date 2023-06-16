@@ -110,8 +110,8 @@ public class UserService {
 
 	public List<Users> getDisabledUsers() {
 		List<Users> users = dao.findByStatus(UserStatus.DISABLED);
-		if (users.isEmpty())
-			throw new EmptyRecordException(ErrorMessage.USER_LIST_EMPTY);
+//		if (users.isEmpty())
+//			throw new EmptyRecordException(ErrorMessage.USER_LIST_EMPTY);
 		return users;
 	}
 

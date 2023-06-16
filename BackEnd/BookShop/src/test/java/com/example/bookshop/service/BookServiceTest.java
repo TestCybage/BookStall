@@ -227,5 +227,17 @@ class BookServiceTest {
 		when(authorService.getByAuthorName(authorName)).thenReturn(null);
 		assertThrows(RecordNotFoundException.class, () -> service.getBookByAuthorName(authorName));
 	}
+	
+	@Test
+	void TestSearchBook(){
+		when(dao.findByBookNameContaining("Test")).thenReturn(books);
+		assertEquals(books, service.searchBook("Test"));
+	}
+	
+	@Test
+	void TestSearchBookNotFound(){
+		when(dao.findByBookNameContaining("abc")).thenReturn(null);
+		assertThrows(RecordNotFoundException.class, ()->service.searchBook("abc"));
+	}
 
 }

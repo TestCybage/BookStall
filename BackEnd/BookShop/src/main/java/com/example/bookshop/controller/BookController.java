@@ -32,6 +32,7 @@ public class BookController {
 	private BookService service;
 
 	@GetMapping("/getAllBooks")
+	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
 	public ResponseEntity<List<BookDto>> getAllBooks() {
 		return new ResponseEntity<>(BookDto.toDto(service.getAllBooks()), HttpStatus.OK);
 	}
@@ -46,6 +47,7 @@ public class BookController {
 	}
 	
 	@GetMapping("/getBookByName/{name}")
+	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
 	public ResponseEntity<BookDto> getBookByName(@PathVariable String name) {
 		Book book = service.getBookByName(name);
 		if (book==null)
@@ -54,8 +56,15 @@ public class BookController {
 	}
 
 	@GetMapping("/getBookByAuthorName/{name}")
+	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
 	public ResponseEntity<List<BookDto>> getBookByAuthorName(@PathVariable String name) {
 		return new ResponseEntity<>(BookDto.toDto(service.getBookByAuthorName(name)), HttpStatus.OK);
+	}
+	
+	@GetMapping("/searchBook/{name}")
+	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+	public ResponseEntity<List<BookDto>> searchBook(@PathVariable String name){
+		return new ResponseEntity<>(BookDto.toDto(service.searchBook(name)),HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasRole('ADMIN')")

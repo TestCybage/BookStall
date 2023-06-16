@@ -77,6 +77,16 @@ class OrderControllerTest {
 		orderDto = OrdersDto.toDto(order);
 		listOrderDto.add(orderDto);
 	}
+	
+	@Test
+	@WithMockUser(authorities = "ADMIN")
+	void testGetAllOrders() {
+		when(service.getAllOrders()).thenReturn(listOrder);
+		ResponseEntity<List<OrdersDto>> response = controller.getAllOrders();
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertNotNull(response.getBody());
+		assertEquals(listOrderDto, response.getBody());
+	}
 
 	@Test
 	@WithMockUser(authorities = "USER")

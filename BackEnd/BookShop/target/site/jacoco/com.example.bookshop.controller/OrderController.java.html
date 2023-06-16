@@ -20,28 +20,36 @@ import com.example.bookshop.service.OrderService;
 
 @RestController
 @RequestMapping(&quot;/order&quot;)
-@PreAuthorize(&quot;hasRole('USER')&quot;)
 @CrossOrigin(&quot;*&quot;)
-<span class="fc" id="L25">public class OrderController {</span>
+<span class="fc" id="L24">public class OrderController {</span>
 
 	@Autowired
 	private OrderService service;
 	
-<span class="fc" id="L30">	Logger log  = Logger.getLogger(OrderController.class);</span>
+<span class="fc" id="L29">	Logger log  = Logger.getLogger(OrderController.class);</span>
 	
+	@PreAuthorize(&quot;hasRole('ADMIN')&quot;)
+	@GetMapping(&quot;/getAllOrders&quot;)
+	public ResponseEntity&lt;List&lt;OrdersDto&gt;&gt; getAllOrders(){
+<span class="fc" id="L34">		return new ResponseEntity&lt;&gt;(OrdersDto.toDto(service.getAllOrders()), HttpStatus.OK);</span>
+	}
+	
+	@PreAuthorize(&quot;hasRole('USER')&quot;)
 	@GetMapping(&quot;/getByUserName/{userName}&quot;)
 	public ResponseEntity&lt;List&lt;OrdersDto&gt;&gt; getOrderByUserName(@PathVariable String userName){
-<span class="fc" id="L34">		return new ResponseEntity&lt;&gt;(OrdersDto.toDto(service.getOrderByUserName(userName)), HttpStatus.OK);</span>
+<span class="fc" id="L40">		return new ResponseEntity&lt;&gt;(OrdersDto.toDto(service.getOrderByUserName(userName)), HttpStatus.OK);</span>
 	}
 	
+	@PreAuthorize(&quot;hasRole('USER')&quot;)
 	@PostMapping(&quot;/addOrder/{userName}/{addressId}&quot;)
 	public ResponseEntity&lt;OrdersDto&gt; addOrder(@PathVariable String userName,@PathVariable int addressId){
-<span class="fc" id="L39">		return new ResponseEntity&lt;&gt;(OrdersDto.toDto(service.addOrder(userName,addressId)), HttpStatus.CREATED);</span>
+<span class="fc" id="L46">		return new ResponseEntity&lt;&gt;(OrdersDto.toDto(service.addOrder(userName,addressId)), HttpStatus.CREATED);</span>
 	}
 	
+	@PreAuthorize(&quot;hasRole('USER')&quot;)
 	@PatchMapping(&quot;/cancelOrder/{id}&quot;)
 	public ResponseEntity&lt;OrdersDto&gt; cancelOrder(@PathVariable int id){
-<span class="fc" id="L44">		return new ResponseEntity&lt;&gt;(OrdersDto.toDto(service.cancelOrder(id)), HttpStatus.ACCEPTED);</span>
+<span class="fc" id="L52">		return new ResponseEntity&lt;&gt;(OrdersDto.toDto(service.cancelOrder(id)), HttpStatus.ACCEPTED);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

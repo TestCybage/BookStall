@@ -11,13 +11,14 @@ public class CorsConfiguration {
 	private static final String POST = "POST";
 	private static final String DELETE = "DELETE";
 	private static final String PUT = "PUT";
+	private static final String PATCH = "PATCH";
 
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-							.allowedMethods(GET,POST,PUT,DELETE)
+							.allowedMethods(GET,POST,PUT,DELETE,PATCH)
 							.allowedHeaders("*")
 							.allowedOriginPatterns("*")
 							.allowCredentials(true)

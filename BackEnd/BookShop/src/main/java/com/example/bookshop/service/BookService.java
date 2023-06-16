@@ -109,6 +109,13 @@ public class BookService {
 		return dao.findByAuthor(author);
 
 	}
+	
+	public List<Book> searchBook(String name){
+		List<Book> books = dao.findByBookNameContaining(name.toUpperCase());
+		if(books==null)
+			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
+		return books;
+	}
 
 	
 }

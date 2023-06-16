@@ -23,16 +23,16 @@ import lombok.NoArgsConstructor;
 public class Author {
 	@Id
 	@GeneratedValue
-<span class="fc" id="L26">	private int authorId;</span>
+	private int authorId;
 
 	@NotNull
-<span class="fc" id="L29">	private String authorName;</span>
+	private String authorName;
 
 	@OneToMany(mappedBy = &quot;author&quot;, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
-<span class="fc" id="L33">	private List&lt;Book&gt; books;</span>
+	private List&lt;Book&gt; books;
 	
-<span class="fc" id="L35">	private int rating;</span>
+	private int rating;
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

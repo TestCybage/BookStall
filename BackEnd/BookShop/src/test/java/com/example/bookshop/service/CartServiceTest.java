@@ -3,9 +3,6 @@ package com.example.bookshop.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.timeout;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.HashMap;
@@ -141,7 +138,6 @@ class CartServiceTest {
 		cart.setAmount(amount);
 		when(dao.save(cart)).thenReturn(cart);
 		Cart result = service.addToCart(201, quantity, userId);
-		//verify(bookService,timeout(bookNames.size())).getBookByName(anyString());
 		assertNotNull(result);
 		assertEquals(cart, result);
 	}

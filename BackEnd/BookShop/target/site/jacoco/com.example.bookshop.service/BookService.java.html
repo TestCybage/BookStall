@@ -55,7 +55,7 @@ import com.example.bookshop.repository.BookRepo;
 <span class="fc bfc" id="L55" title="All 2 branches covered.">		if (author == null) {</span>
 <span class="fc" id="L56">			newBook.getAuthor().setAuthorName(newBook.getAuthor().getAuthorName());</span>
 <span class="fc" id="L57">			authorService.addAuthor(newBook.getAuthor());</span>
-		} else {
+<span class="fc" id="L58">		} else {</span>
 <span class="fc" id="L59">			newBook.setAuthor(author);</span>
 		}
 <span class="fc" id="L61">		return dao.save(newBook);</span>
@@ -108,6 +108,13 @@ import com.example.bookshop.repository.BookRepo;
 <span class="fc" id="L108">			throw new RecordNotFoundException(ErrorMessage.AUTHOR_NOT_FOUND);</span>
 <span class="fc" id="L109">		return dao.findByAuthor(author);</span>
 
+	}
+	
+	public List&lt;Book&gt; searchBook(String name){
+<span class="fc" id="L114">		List&lt;Book&gt; books = dao.findByBookNameContaining(name);</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">		if(books==null)</span>
+<span class="fc" id="L116">			throw new RecordNotFoundException(ErrorMessage.BOOK_NOT_FOUND);</span>
+<span class="fc" id="L117">		return books;</span>
 	}
 
 	

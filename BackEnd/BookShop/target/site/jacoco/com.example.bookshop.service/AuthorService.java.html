@@ -61,7 +61,7 @@ import com.example.bookshop.repository.AuthorRepo;
 <span class="fc" id="L61">		List&lt;Book&gt; books = bookService.getBookByAuthorName(author.getAuthorName());</span>
 <span class="fc bfc" id="L62" title="All 2 branches covered.">			for (Book book : books) {</span>
 <span class="fc" id="L63">				bookService.deleteBook(book.getBookId());</span>
-<span class="fc" id="L64">			}</span>
+			}
 <span class="fc" id="L65">		dao.delete(author);</span>
 <span class="fc" id="L66">		return true;</span>
 	}

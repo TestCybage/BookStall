@@ -21,22 +21,22 @@ import com.example.bookshop.service.UserService;
 @PreAuthorize(&quot;hasRole('ADMIN')&quot;)
 @CrossOrigin(&quot;*&quot;)
 <span class="fc" id="L23">public class AdminController {</span>
-	
+
 	@Autowired
 	private UserService service;
-	
+
 	@GetMapping(&quot;/forAdmin&quot;)
 	public String forAdmin() {
 <span class="fc" id="L30">		return &quot;This URL is only accessible to ADMIN&quot;;</span>
 	}
-	
+
 	@PatchMapping(&quot;/unblockUser/{email}&quot;)
-	public ResponseEntity&lt;UserDto&gt; unblockUser(@PathVariable String email){
+	public ResponseEntity&lt;UserDto&gt; unblockUser(@PathVariable String email) {
 <span class="fc" id="L35">		return new ResponseEntity&lt;&gt;(UserDto.toDto(service.unblockUser(email)), HttpStatus.OK);</span>
 	}
-	
+
 	@GetMapping(&quot;/getDisabledUsers&quot;)
-	public ResponseEntity&lt;List&lt;UserDto&gt;&gt; getDisabledUsers(){
+	public ResponseEntity&lt;List&lt;UserDto&gt;&gt; getDisabledUsers() {
 <span class="fc" id="L40">		return new ResponseEntity&lt;&gt;(UserDto.toDto(service.getDisabledUsers()), HttpStatus.OK);</span>
 	}
 

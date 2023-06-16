@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 <span class="nc" id="L14">@AllArgsConstructor</span>
 public class AuthorDto {
 
-<span class="fc" id="L17">	private int authorId;</span>
+	private int authorId;
 
-<span class="fc" id="L19">	private String authorName;</span>
+	private String authorName;
 	
-<span class="fc" id="L21">	private int rating;</span>
+	private int rating;
 	
 	public static AuthorDto toDto(Author entity) {
 <span class="fc" id="L24">		AuthorDto dto = new AuthorDto();</span>

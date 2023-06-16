@@ -16,21 +16,21 @@ import lombok.NoArgsConstructor;
 <span class="fc" id="L16">@AllArgsConstructor</span>
 public class BookDto {
 
-<span class="fc" id="L19">	private int bookId;</span>
+	private int bookId;
 
-<span class="fc" id="L21">	private String bookName;</span>
+	private String bookName;
 
-<span class="fc" id="L23">	private Author author;</span>
+	private Author author;
 
-<span class="fc" id="L25">	private String description;</span>
+	private String description;
 
-<span class="fc" id="L27">	private int inStock;</span>
+	private int inStock;
 
-<span class="fc" id="L29">	private int copiesSold;</span>
+	private int copiesSold;
 
-<span class="fc" id="L31">	private double price;</span>
+	private double price;
 
-<span class="fc" id="L33">	private int rating;</span>
+	private int rating;
 
 	public static BookDto toDto(Book entity) {
 <span class="fc" id="L36">		BookDto dto = new BookDto();</span>

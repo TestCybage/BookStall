@@ -30,32 +30,32 @@ import lombok.NoArgsConstructor;
 public class Users {
 	
 	@Id
-<span class="fc" id="L33">	private String userName;</span>
+	private String userName;
 	
 	@NotNull
-<span class="fc" id="L36">	private String name;</span>
+	private String name;
 	
 	@NotNull
 	@Email
-<span class="fc" id="L40">	private String email;</span>
+	private String email;
 	
 	@NotNull
-<span class="fc" id="L43">	private String password;</span>
+	private String password;
 	
 	@NotNull
 	@Pattern(regexp = &quot;^[0-9]{10}$&quot;)
-<span class="fc" id="L47">	private String mobileNo;</span>
+	private String mobileNo;
 	
 	@Enumerated(EnumType.STRING)
-<span class="fc" id="L50">	private UserStatus status;</span>
+	private UserStatus status;
 	
 	@OneToMany(mappedBy = &quot;user&quot;,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JsonIgnore
-<span class="fc" id="L54">	private List&lt;Orders&gt; orders;</span>
+	private List&lt;Orders&gt; orders;
 	
 	@OneToMany(mappedBy = &quot;user&quot;,cascade = CascadeType.ALL)
 	@JsonIgnore
-<span class="fc" id="L58">	private List&lt;Address&gt; address;</span>
+	private List&lt;Address&gt; address;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name=&quot;USER_ROLE&quot;,
@@ -66,7 +66,7 @@ public class Users {
 				@JoinColumn(name=&quot;ROLE_ID&quot;)
 		}
 			)
-<span class="fc" id="L69">	private Set&lt;Role&gt; role; </span>
+	private Set&lt;Role&gt; role; 
 		
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

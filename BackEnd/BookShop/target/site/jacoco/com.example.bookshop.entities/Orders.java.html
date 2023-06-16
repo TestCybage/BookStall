@@ -28,25 +28,25 @@ public class Orders {
 
 	@Id
 	@GeneratedValue
-<span class="fc" id="L31">	private int orderId;</span>
+	private int orderId;
 	
-<span class="fc" id="L33">	@ElementCollection</span>
+	@ElementCollection
 	@MapKeyColumn(name = &quot;book_name&quot;)
     @Column(name = &quot;quantity&quot;)
 <span class="fc" id="L36">	private Map&lt;String, Integer&gt; books = new HashMap&lt;&gt;();</span>
 	
 	@NotNull
 	@OneToOne
-<span class="fc" id="L40">	private Address address;</span>
+	private Address address;
 
 	@Enumerated(EnumType.STRING)
-<span class="fc" id="L43">	private OrderStatus status;</span>
+	private OrderStatus status;
 	
 	@NotNull
-<span class="fc" id="L46">	private double amount;</span>
+	private double amount;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-<span class="fc" id="L49">	private Users user;</span>
+	private Users user;
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
